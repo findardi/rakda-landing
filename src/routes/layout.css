@@ -1,0 +1,255 @@
+@import 'tailwindcss';
+
+/* Rakda — "The Clean Room", inherited from the app. Cool near-white surfaces,
+   slate-teal only where it means action, permission, or watermark. Light only. */
+@theme {
+	--font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-mono: 'JetBrains Mono Variable', ui-monospace, 'SF Mono', monospace;
+
+	--color-surface: oklch(0.997 0.002 220);
+	--color-ground: oklch(0.985 0.004 220);
+	--color-panel: oklch(0.965 0.006 225);
+	--color-line: oklch(0.905 0.01 225);
+	--color-line-strong: oklch(0.82 0.014 228);
+
+	--color-ink: oklch(0.22 0.02 235);
+	--color-ink-2: oklch(0.31 0.02 235);
+	--color-ink-3: oklch(0.4 0.02 235);
+	--color-muted: oklch(0.48 0.02 235);
+
+	--color-primary: oklch(0.48 0.105 215);
+	--color-primary-strong: oklch(0.42 0.105 215);
+	--color-primary-content: oklch(0.99 0.002 220);
+	--color-primary-soft: oklch(0.955 0.02 215);
+	--color-accent: oklch(0.52 0.11 155);
+	--color-warning-ink: oklch(0.52 0.12 70);
+	--color-error: oklch(0.5 0.19 25);
+
+	--radius-field: 6px;
+	--radius-box: 8px;
+
+	--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+	html {
+		color-scheme: light;
+		scrollbar-color: var(--color-line-strong) transparent;
+		scroll-behavior: smooth;
+	}
+	body {
+		background-color: var(--color-ground);
+		color: var(--color-ink);
+		font-family: var(--font-sans);
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		caret-color: var(--color-primary);
+	}
+	::selection {
+		background-color: color-mix(in oklch, var(--color-primary) 18%, transparent);
+	}
+	:focus-visible {
+		outline: 2px solid var(--color-primary);
+		outline-offset: 2px;
+		border-radius: 3px;
+	}
+	h1,
+	h2,
+	h3 {
+		text-wrap: balance;
+		letter-spacing: -0.02em;
+	}
+	p,
+	li {
+		text-wrap: pretty;
+	}
+	a {
+		text-underline-offset: 0.16em;
+		text-decoration-thickness: 1px;
+	}
+	.font-mono,
+	code,
+	kbd,
+	samp,
+	time {
+		font-variant-numeric: tabular-nums;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+}
+
+@layer components {
+	.wrap {
+		width: 100%;
+		max-width: 82rem;
+		margin-inline: auto;
+		padding-inline: 1.25rem;
+	}
+	@media (min-width: 640px) {
+		.wrap {
+			padding-inline: 2rem;
+		}
+	}
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		min-height: 2.75rem;
+		padding: 0.625rem 1.125rem;
+		border-radius: var(--radius-field);
+		font-weight: 500;
+		line-height: 1.2;
+		text-decoration: none;
+		border: 1px solid transparent;
+		transition:
+			background-color 150ms ease-out,
+			border-color 150ms ease-out,
+			color 150ms ease-out;
+		cursor: pointer;
+	}
+	.btn-primary {
+		background-color: var(--color-primary);
+		color: var(--color-primary-content);
+	}
+	.btn-primary:hover {
+		background-color: var(--color-primary-strong);
+	}
+	.btn-quiet {
+		background-color: var(--color-surface);
+		color: var(--color-ink);
+		border-color: var(--color-line-strong);
+	}
+	.btn-quiet:hover {
+		background-color: var(--color-panel);
+	}
+	.btn:disabled,
+	.btn[aria-disabled='true'] {
+		background-color: var(--color-panel);
+		color: var(--color-muted);
+		border-color: var(--color-line);
+		cursor: not-allowed;
+	}
+	.chip {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.375rem;
+		height: 1.5rem;
+		padding-inline: 0.5rem;
+		border: 1px solid var(--color-line-strong);
+		border-radius: 999px;
+		font-family: var(--font-mono);
+		font-size: 0.6875rem;
+		letter-spacing: 0.01em;
+		color: var(--color-ink-2);
+		background-color: var(--color-surface);
+		white-space: nowrap;
+	}
+	.chip-sans {
+		font-family: var(--font-sans);
+		font-size: 0.75rem;
+		font-weight: 500;
+		letter-spacing: 0;
+	}
+	.chip-primary {
+		border-color: color-mix(in oklch, var(--color-primary) 40%, transparent);
+		background-color: var(--color-primary-soft);
+		color: var(--color-primary-strong);
+	}
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+	.h2 {
+		font-size: clamp(1.625rem, 1.2rem + 1.6vw, 2.25rem);
+		font-weight: 600;
+		line-height: 1.15;
+		max-width: 24ch;
+	}
+	.lede {
+		font-size: 1.0625rem;
+		line-height: 1.6;
+		color: var(--color-ink-2);
+		max-width: 62ch;
+	}
+	/* Reference numeral printed on a landing section; the FAQ margin points at it. */
+	.secnum {
+		display: inline-block;
+		margin-right: 0.625rem;
+		font-size: 0.8125rem;
+		font-weight: 500;
+		letter-spacing: 0.02em;
+		color: var(--color-muted);
+		vertical-align: 0.35em;
+	}
+	/* Every section after the hero: intro column sticks, content column scrolls. */
+	.split {
+		display: grid;
+		grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+		gap: 3rem 4rem;
+		align-items: start;
+	}
+	.split > .intro {
+		position: sticky;
+		top: 5rem;
+	}
+	.split > .intro .lede {
+		margin-top: 0.875rem;
+	}
+	@media (max-width: 1023px) {
+		.split {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+		.split > .intro {
+			position: static;
+		}
+	}
+}
+
+@layer components {
+	.btn-sm {
+		min-height: 2.25rem;
+		padding: 0.375rem 0.875rem;
+		font-size: 0.875rem;
+	}
+	.section {
+		padding-block: 5.5rem;
+		border-top: 1px solid var(--color-line);
+	}
+	@media (max-width: 767px) {
+		.section {
+			padding-block: 3.5rem;
+		}
+	}
+	.link-quiet {
+		background: none;
+		border: 0;
+		padding: 0;
+		font: inherit;
+		color: var(--color-primary);
+		text-decoration: underline;
+		text-underline-offset: 0.16em;
+		cursor: pointer;
+	}
+	.link-quiet:hover {
+		color: var(--color-primary-strong);
+	}
+}

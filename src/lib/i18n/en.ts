@@ -1,0 +1,196 @@
+import type { id } from './id';
+
+export const en: Record<keyof typeof id, string> = {
+	'meta.title': 'Rakda — A secure data room for your deal documents',
+	'meta.description':
+		'A virtual data room you set up yourself: access per group per folder, a watermark on every page, and an activity trail no one can erase. 30-day trial.',
+
+	'nav.skip': 'Skip to content',
+	'nav.signIn': 'Sign in',
+	'nav.trial': 'Start trial',
+	'nav.faq': 'FAQ',
+	'nav.lang': 'ID',
+	'nav.langAria': 'Ganti ke Bahasa Indonesia',
+
+	'hero.h1': 'Who sees what. You decide.',
+	'hero.sub':
+		'Rakda is a data room for deal documents: access per group per folder, a watermark on every page that is opened, and an activity trail no one can erase.',
+	'hero.cta': 'Start the 30-day trial',
+	'hero.ctaHint': 'No demo call. Your first room is ready in minutes.',
+	'hero.tryHint':
+		'Try it: switch permissions on or off in this grid. The preview on the right follows.',
+
+	'grid.template': 'M&A due diligence template',
+	'grid.synthetic': 'sample room · synthetic data',
+	'grid.folder': 'Folder',
+	'grid.perm.view': 'View',
+	'grid.perm.watermark': 'Watermark',
+	'grid.perm.download': 'Download',
+	'grid.perm.original': 'Download clean PDF',
+	'grid.cellAria': '{perm} for {group} in folder {folder}',
+	'grid.rule': 'Clean PDF download turns on Download; Download and watermark turn on View.',
+	'grid.exclusive':
+		'Watermark and clean download cannot both be on: marking the screen while handing out a clean file protects nothing.',
+	'grid.flow': 'Access flows down to everything in the folder, subfolders included.',
+	'grid.reset': 'Restore the starting setup',
+	'grid.groupTabs': 'Choose a group',
+
+	'preview.viewingAs': 'Viewed as',
+	'preview.doc': 'Sample document',
+	'preview.page': 'Page {n} of {total}',
+	'preview.confidential': 'CONFIDENTIAL',
+	'preview.watermarked': 'Watermarked',
+	'preview.protected':
+		'Secure view: every page carries the reader’s identity watermark and is never sent as the original file.',
+	'preview.forbidden.title': 'You do not have access',
+	'preview.forbidden.body':
+		'{group} cannot see the folder “{folder}”. Its documents do not appear in their list at all.',
+	'preview.download.marked': 'Download PDF',
+	'preview.download.markedHint': '{n} pages, watermarked. No text layer.',
+	'preview.download.clean': 'Download clean PDF',
+	'preview.download.cleanHint': 'A clean rendition. The original file still never leaves.',
+	'preview.download.off':
+		'Downloads are off for {group}. The document can only be read in the viewer.',
+	'preview.wmAria': 'Watermark on every page: {text}',
+
+	'activity.title': 'Activity',
+	'activity.appendOnly': 'Append-only. No entry can be edited or deleted.',
+	'activity.you': 'You',
+	'activity.seed.created': 'created the data room “{room}”',
+	'activity.seed.template': 'added 22 folders at once from the M&A due diligence template',
+	'activity.seed.invite': 'invited {email} as Guest in group {group}, access until {date}',
+	'activity.on': 'turned on {perm} for {group} in folder “{folder}”',
+	'activity.off': 'turned off {perm} for {group} in folder “{folder}”',
+	'activity.viewed': 'opened document “{doc}” (v1)',
+	'activity.downloaded.marked': 'downloaded document “{doc}” (v1, watermarked)',
+	'activity.downloaded.clean': 'downloaded document “{doc}” (v1, clean)',
+
+	'qa.title': 'Q&A per group. One queue for you.',
+	'qa.desc':
+		'Each group only sees its own questions. You answer from one queue, then choose which answers deserve to become an FAQ for every group, without the asker’s identity.',
+	'qa.sees': 'What {who} sees',
+	'qa.owner': 'You (Owner)',
+	'qa.status.waiting': 'Waiting',
+	'qa.status.answered': 'Answered',
+	'qa.status.closed': 'Closed',
+	'qa.from': 'from {group}',
+	'qa.faq': 'FAQ',
+	'qa.faqNote': 'FAQs are shown to every group without the asker’s identity.',
+	'qa.export': 'Export CSV',
+	'qa.quota': 'Quota per group',
+	'qa.q1': 'Do the 2027 projections already include the PT Nusantara Distribusi contract?',
+	'qa.a1': 'They do. The contract is in from Q2 2026. See Financials › Projections, page 4.',
+	'qa.q2': 'Which shareholders have not yet signed the 2024 shareholder agreement?',
+	'qa.q3': 'When was the “Cendana” trademark last renewed?',
+	'qa.a3': 'March 2026, valid until 2036. The copy is under Intellectual property.',
+	'qa.faqQ': 'Are the FY2023–FY2025 financial statements audited?',
+	'qa.faqA': 'Yes. All three were audited by an independent firm with an unmodified opinion.',
+
+	'eng.title': 'You know which pages were read, and for how long.',
+	'eng.desc':
+		'Every document opening records page by page with its duration. Guests never see anyone’s activity, including their own.',
+	'eng.reader': 'Reader',
+	'eng.doc': 'Document',
+	'eng.total': 'Total reading',
+	'eng.longest': 'Longest',
+	'eng.page': 'p. {n}',
+	'eng.pageLong': 'Page {n}',
+	'eng.dwell': '{m} min {s} s',
+	'eng.dwellShort': '{s} s',
+	'eng.unread': 'not opened',
+	'eng.pagesRead': '{read} of {total} pages opened',
+	'eng.legend': 'Bar height = time the page stayed open. Pages without a bar were not opened.',
+	'eng.export': 'Export CSV',
+
+	'tpl.title': 'Start from a template, not an empty folder.',
+	'tpl.desc':
+		'Five built-in templates, one per deal type. A template adds folders to your room; it never replaces what is already there.',
+	'tpl.folders': '{n} folders',
+	'tpl.structure': 'Folder structure',
+	'tpl.apply': 'Apply — {n} new folders',
+	'tpl.pick': 'Choose a template',
+
+	'life.title': 'One room, three states.',
+	'life.desc':
+		'A room is born in Preparation, opens to guests when Active, then freezes as Archive. An archive can be reactivated.',
+	'life.status': 'Status',
+	'life.prepare': 'Preparation',
+	'life.prepare.hint': 'The room is still being prepared. Guests cannot open it yet.',
+	'life.prepare.body':
+		'Build the folder index, upload documents, create groups, set permissions. A guest who tries to enter is refused.',
+	'life.active': 'Active',
+	'life.active.hint': 'The room is active. Parties with access can open it.',
+	'life.active.body':
+		'Invite guests by email into one group, with or without an access expiry. Every opening is recorded.',
+	'life.archive': 'Archive',
+	'life.archive.hint': 'The room becomes read-only for every role, including you.',
+	'life.archive.body':
+		'Guests can still read, but downloads are switched off and every page is watermarked. Archive package: a ZIP of the whole room with the activity CSVs, link valid for 30 days.',
+	'life.guests': '{n} guests',
+	'life.guestsNone': 'no guests yet',
+	'life.package': 'Archive package',
+	'life.packageMeta': '{n} documents · expires {date}',
+
+	'sec.title': 'What we do. What we do not claim.',
+	'sec.desc': 'Security claims the code can back, and the limits we state as they are.',
+	'sec.do': 'What we do',
+	'sec.dont': 'What we do not claim',
+	'sec.do.1.t': 'The watermark is burned into pixels',
+	'sec.do.1.b':
+		'Every time a page is opened, the reader’s identity, the minute, and the IP address are burned into the page image. No PDF tool can lift it.',
+	'sec.do.2.t': 'The original file never leaves',
+	'sec.do.2.b':
+		'Even the room owner receives a rendition, not the uploaded bytes. “Clean” means a clean rendition.',
+	'sec.do.3.t': 'The activity trail is append-only',
+	'sec.do.3.b':
+		'Names and actors are frozen at write time. Guests never see any activity, including their own.',
+	'sec.do.4.t': 'Encrypted at rest',
+	'sec.do.4.b':
+		'Object storage uses AES-256 (SSE-S3), verified every time the server starts. The key is held by the storage provider.',
+	'sec.do.5.t': 'Stored in Jakarta',
+	'sec.do.5.b': 'Documents and the database live in Indonesia.',
+	'sec.do.6.t': 'Security is not sold per plan',
+	'sec.do.6.b':
+		'Privacy mode, viewer hardening, and view watermarking are on every plan. A plan gate never reduces anyone’s security.',
+	'sec.dont.1.t': 'Blocking screenshots',
+	'sec.dont.1.b':
+		'Nobody can. Privacy mode veils the page when the window loses focus, and the watermark makes sure any capture carries the identity of whoever took it.',
+	'sec.dont.2.t': 'Revoking access instantly',
+	'sec.dont.2.b':
+		'Pages already loaded in a guest’s browser cannot be recalled. Revocation applies to the next opening.',
+	'sec.dont.3.t': 'Reading on a phone',
+	'sec.dont.3.b': 'The viewer is not served below 768×480. Guests read on a laptop.',
+	'sec.dont.4.t': 'A lightweight watermarked PDF',
+	'sec.dont.4.b':
+		'Watermarked downloads are raster: no text layer, larger, capped at 750 pages. Above that, read in the viewer.',
+
+	'close.title': 'A secure data room for your deal documents.',
+	'close.body':
+		'Built for confidential documents. Controlled, audited access from preparation to archive.',
+	'close.cta': 'Start the 30-day trial',
+	'close.signIn': 'Already have an account? Sign in',
+	'close.unconfigured': 'The app link is not configured for this page yet.',
+
+	'faq.metaTitle': 'Frequently asked questions — Rakda',
+	'faq.metaDescription':
+		'Short answers about the Rakda data room: what it is, getting started, access permissions, security, tracking, the trial, and what happens after the deal.',
+	'faq.title': 'Frequently asked questions',
+	'faq.index': 'Contents',
+	'faq.count': '{n} questions',
+	'faq.proof': 'Shown at',
+	'faq.permalink': 'Link to question {n}',
+	'faq.ref.grid': 'Permission grid',
+	'faq.ref.qa': 'Q&A',
+	'faq.ref.engagement': 'Activity',
+	'faq.ref.templates': 'Templates',
+	'faq.ref.lifecycle': 'Room lifecycle',
+	'faq.ref.security': 'Security',
+	'faq.close.title': 'Clear enough?',
+	'faq.close.body': 'Your first room is ready in minutes. 30-day trial, no demo call.',
+	'faq.close.cta': 'Start the 30-day trial',
+	'faq.close.back': 'See the mechanics on the main page',
+	'footer.synthetic':
+		'Every name, document, and number on this page is fictional and for demonstration only.',
+	'footer.lang': 'Bahasa Indonesia',
+	'footer.rights': '© 2026 Rakda'
+};
