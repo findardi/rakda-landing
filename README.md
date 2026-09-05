@@ -20,4 +20,4 @@ bun run test:e2e   # playwright
 
 ## Environment
 
-Copy `.env.example` to `.env` and set `PUBLIC_APP_URL` to the app origin. Until it is set, the trial and sign-in links resolve to an in-page anchor.
+Copy `.env.example` to `.env` and set `PUBLIC_APP_URL` to the app origin. Until it is set, sign-in links are not rendered and the trial action falls back: with `PUBLIC_CONTACT_EMAIL` set it becomes a mailto asking to be told when the trial opens; with neither set it is a plain "opens soon" statement.

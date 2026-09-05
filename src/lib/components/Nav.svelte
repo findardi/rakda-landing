@@ -3,14 +3,21 @@
 	import { localePath, otherLocale } from '$lib/i18n';
 	import { getI18n } from '$lib/i18n/context';
 	import Brand from './Brand.svelte';
+	import TrialCta from './TrialCta.svelte';
+	import { heroCta } from '$lib/hero-cta.svelte';
 	import { urlSearch } from '$lib/url-search.svelte';
 	import { page } from '$app/state';
+
+	// On the landing page the nav's trial action stays quiet while the hero's own
+	// button is on screen; elsewhere (the FAQ) it is the page's one teal action.
+	let { quietWhileHero = false }: { quietWhileHero?: boolean } = $props();
 
 	const { t, locale } = getI18n();
 	const other = otherLocale(locale);
 
 	// The grid state rides along when switching language.
 	let switchHref = $derived(localePath(other, urlSearch.current));
+	const login = appUrl('/login');
 </script>
 
 <a class="skip" href="#main">{t('nav.skip')}</a>
@@ -31,8 +38,10 @@
 				class="signin"
 				aria-current={page.url.pathname.endsWith('/faq') ? 'page' : undefined}>{t('nav.faq')}</a
 			>
-			<a href={appUrl('/login')} class="signin">{t('nav.signIn')}</a>
-			<a href={appUrl('/register')} class="btn btn-primary btn-sm">{t('nav.trial')}</a>
+			{#if login}
+				<a href={login} class="signin">{t('nav.signIn')}</a>
+			{/if}
+			<TrialCta label={t('nav.trial')} size="sm" short quiet={quietWhileHero && heroCta.visible} />
 		</nav>
 	</div>
 </header>

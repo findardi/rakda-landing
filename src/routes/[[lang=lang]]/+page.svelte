@@ -7,6 +7,7 @@
 	import TemplatesSection from '$lib/components/TemplatesSection.svelte';
 	import LifecycleSection from '$lib/components/LifecycleSection.svelte';
 	import SecuritySection from '$lib/components/SecuritySection.svelte';
+	import SetupSection from '$lib/components/SetupSection.svelte';
 	import Close from '$lib/components/Close.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Seo from '$lib/components/Seo.svelte';
@@ -16,7 +17,7 @@
 
 <Seo title={t('meta.title')} description={t('meta.description')} path="/" />
 
-<Nav />
+<Nav quietWhileHero />
 <main id="main">
 	<Hero />
 	<QASection />
@@ -24,6 +25,7 @@
 	<TemplatesSection />
 	<LifecycleSection />
 	<SecuritySection />
+	<SetupSection />
 	<Close />
 </main>
 <Footer />

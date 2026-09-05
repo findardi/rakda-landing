@@ -10,7 +10,7 @@
 	const shade = (i: number) => SHADES[i] ?? 'var(--color-muted)';
 </script>
 
-<section class="act" aria-live="polite">
+<section class="act">
 	<header class="head">
 		<h3>{t('activity.title')}</h3>
 		<p class="note">{t('activity.appendOnly')}</p>

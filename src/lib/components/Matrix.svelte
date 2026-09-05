@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { tick } from 'svelte';
 	import { getI18n } from '$lib/i18n/context';
 	import type { Key } from '$lib/i18n';
 	import { FOLDERS, GROUPS } from '$lib/demo/data';
@@ -8,18 +9,102 @@
 	let {
 		grid,
 		focus,
-		ontoggle
+		ontoggle,
+		onfocuscell,
+		describedby
 	}: {
 		grid: Grid;
 		focus: { g: number; f: number };
 		ontoggle: (g: number, f: number, perm: Perm) => void;
+		onfocuscell: (g: number, f: number) => void;
+		describedby?: string;
 	} = $props();
 
 	const { t, locale } = getI18n();
 	const permName = (p: Perm) => t(`grid.perm.${p}` as Key);
+	const permTip = (p: Perm) => t(`grid.tip.${p}` as Key);
 
-	// On narrow screens the table shows one group at a time.
-	let mobileGroup = $state(0);
+	// Below 640px the table shows one group at a time: the focused group, so the
+	// tab, the ringed cell, and the preview always agree.
+
+	// Roving focus: the whole grid is one tab stop. The tabbable segment is the
+	// focused cell's segment `p`; arrows move it, and the ring and preview follow.
+	let table = $state<HTMLTableElement | null>(null);
+	let p = $state(0);
+
+	function seg(g: number, f: number, i: number): HTMLButtonElement | null {
+		return table?.querySelector(`[data-g="${g}"][data-f="${f}"][data-p="${i}"]`) ?? null;
+	}
+
+	async function move(g: number, f: number, i: number) {
+		onfocuscell(g, f);
+		p = i;
+		await tick();
+		seg(g, f, i)?.focus();
+	}
+
+	function onKey(e: KeyboardEvent, g: number, f: number, i: number) {
+		const G = GROUPS.length;
+		const F = FOLDERS.length;
+		const P = PERMS.length;
+		let ng = g;
+		let nf = f;
+		let ni = i;
+		switch (e.key) {
+			case 'ArrowRight':
+				if (i < P - 1) {
+					ni = i + 1;
+				} else if (g < G - 1) {
+					ng = g + 1;
+					ni = 0;
+				} else {
+					return;
+				}
+				break;
+			case 'ArrowLeft':
+				if (i > 0) {
+					ni = i - 1;
+				} else if (g > 0) {
+					ng = g - 1;
+					ni = P - 1;
+				} else {
+					return;
+				}
+				break;
+			case 'ArrowDown':
+				if (f < F - 1) nf = f + 1;
+				else return;
+				break;
+			case 'ArrowUp':
+				if (f > 0) nf = f - 1;
+				else return;
+				break;
+			case 'Home':
+				ng = 0;
+				ni = 0;
+				break;
+			case 'End':
+				ng = G - 1;
+				ni = P - 1;
+				break;
+			case 'PageDown':
+				nf = F - 1;
+				break;
+			case 'PageUp':
+				nf = 0;
+				break;
+			default:
+				return;
+		}
+		e.preventDefault();
+		void move(ng, nf, ni);
+	}
+
+	// A segment reached by pointer or by Tab becomes the tabbable one.
+	function onFocusIn(g: number, f: number, i: number) {
+		if (focus.g !== g || focus.f !== f) onfocuscell(g, f);
+		p = i;
+	}
 </script>
 
 <div class="tabs" role="group" aria-label={t('grid.groupTabs')}>
@@ -27,9 +112,9 @@
 		<button
 			type="button"
 			class="tab"
-			class:active={mobileGroup === g}
-			aria-pressed={mobileGroup === g}
-			onclick={() => (mobileGroup = g)}>{group.name[locale]}</button
+			class:active={focus.g === g}
+			aria-pressed={focus.g === g}
+			onclick={() => onfocuscell(g, focus.f)}>{group.name[locale]}</button
 		>
 	{/each}
 </div>
@@ -41,12 +126,12 @@
 	{/each}
 </div>
 
-<table class="matrix">
+<table class="matrix" bind:this={table} aria-describedby={describedby}>
 	<thead>
 		<tr>
 			<th scope="col" class="fh">{t('grid.folder')}</th>
 			{#each GROUPS as group, g (group.id)}
-				<th scope="col" class="gh" class:hide-sm={mobileGroup !== g}>{group.name[locale]}</th>
+				<th scope="col" class="gh" class:hide-sm={focus.g !== g}>{group.name[locale]}</th>
 			{/each}
 		</tr>
 	</thead>
@@ -56,13 +141,13 @@
 				<th scope="row" class="fname">{folder.name[locale]}</th>
 				{#each GROUPS as group, g (group.id)}
 					{@const cell = grid[g][f]}
-					<td class:hide-sm={mobileGroup !== g} class:focused={focus.g === g && focus.f === f}>
+					<td class:hide-sm={focus.g !== g} class:focused={focus.g === g && focus.f === f}>
 						<div
 							class="segs"
 							role="group"
 							aria-label="{group.name[locale]} · {folder.name[locale]}"
 						>
-							{#each PERMS as perm (perm)}
+							{#each PERMS as perm, i (perm)}
 								<button
 									type="button"
 									class="seg"
@@ -73,7 +158,14 @@
 										group: group.name[locale],
 										folder: folder.name[locale]
 									})}
+									title={permTip(perm)}
+									tabindex={focus.g === g && focus.f === f && p === i ? 0 : -1}
+									data-g={g}
+									data-f={f}
+									data-p={i}
 									onclick={() => ontoggle(g, f, perm)}
+									onkeydown={(e) => onKey(e, g, f, i)}
+									onfocusin={() => onFocusIn(g, f, i)}
 								>
 									<PermIcon {perm} />
 								</button>
@@ -215,18 +307,24 @@
 	td.focused .segs {
 		outline-color: var(--color-primary);
 	}
+	/* Under the stacked layout a focused cell scrolls clear of the sticky nav above
+	   and the preview sheet below. */
+	@media (max-width: 1023px) {
+		.seg {
+			scroll-margin-block: 4.5rem 26rem;
+		}
+	}
 	@media (max-width: 767px) {
+		.fname {
+			white-space: normal;
+		}
+	}
+	@media (max-width: 639px) {
 		.tabs {
 			display: flex;
 		}
 		.hide-sm {
 			display: none;
-		}
-		.fname {
-			white-space: normal;
-		}
-		.matrix {
-			font-size: 0.8125rem;
 		}
 	}
 </style>

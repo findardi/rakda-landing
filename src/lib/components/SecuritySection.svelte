@@ -14,7 +14,7 @@
 			<h2 id="sec-h" class="h2">
 				<span class="secnum font-mono">{secnum('security')}</span>{t('sec.title')}
 			</h2>
-			<p class="lede">{t('sec.desc')}</p>
+			<p class="lede big">{t('sec.desc')}</p>
 		</div>
 		<div class="content">
 			<div class="cols">
@@ -34,7 +34,10 @@
 					<dl>
 						{#each donts as n (n)}
 							<div class="row">
-								<dt>{t(`sec.dont.${n}.t`)}</dt>
+								<dt>
+									<span class="not font-mono">{t('sec.notClaimed')}</span>
+									{t(`sec.dont.${n}.t`)}
+								</dt>
 								<dd>{t(`sec.dont.${n}.b`)}</dd>
 							</div>
 						{/each}
@@ -46,6 +49,15 @@
 </section>
 
 <style>
+	/* The trust sheet is the closing argument: the page's one larger measure, more
+	   air above and below, and ledger terms set a step up from every other sheet. */
+	.sec {
+		padding-block: 7rem;
+	}
+	.big {
+		font-size: 1.125rem;
+		line-height: 1.55;
+	}
 	.cols {
 		display: grid;
 		grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
@@ -59,37 +71,53 @@
 		font-size: 0.8125rem;
 		font-weight: 600;
 		color: var(--color-ink);
-		margin-bottom: 0.5rem;
+		margin-bottom: 0.75rem;
 	}
 	.dont h3 {
 		color: var(--color-ink-2);
 	}
 	.row {
 		display: grid;
-		grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
-		gap: 0.25rem 1.5rem;
-		padding-block: 0.875rem;
+		grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
+		gap: 0.375rem 1.5rem;
+		padding-block: 1.125rem;
 		border-top: 1px solid var(--color-line);
 	}
 	dt {
-		font-weight: 500;
+		font-weight: 600;
 		color: var(--color-ink);
-		font-size: 0.9375rem;
-		line-height: 1.45;
+		font-size: 1.0625rem;
+		line-height: 1.35;
+		letter-spacing: -0.01em;
+		text-wrap: balance;
 	}
 	dd {
-		font-size: 0.875rem;
+		font-size: 0.9375rem;
 		line-height: 1.55;
 		color: var(--color-ink-2);
+		max-width: 52ch;
 	}
 	.dont .row {
 		grid-template-columns: 1fr;
 	}
+	/* A non-claim is marked in the machine voice, not struck through: the term stays
+	   legible and the mark carries the meaning at full contrast. */
 	.dont dt {
 		color: var(--color-ink-2);
-		text-decoration: line-through;
-		text-decoration-color: var(--color-line-strong);
-		text-decoration-thickness: 1px;
+	}
+	.not {
+		display: block;
+		margin-bottom: 0.25rem;
+		font-size: 0.6875rem;
+		font-weight: 500;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--color-muted);
+	}
+	@media (max-width: 1199px) {
+		.row {
+			grid-template-columns: 1fr;
+		}
 	}
 	@media (max-width: 1023px) {
 		.cols {
@@ -97,12 +125,12 @@
 		}
 		.col.dont {
 			border-top: 1px solid var(--color-line-strong);
-			margin-top: 1.5rem;
+			margin-top: 2rem;
 		}
 	}
-	@media (max-width: 639px) {
-		.row {
-			grid-template-columns: 1fr;
+	@media (max-width: 767px) {
+		.sec {
+			padding-block: 4.5rem;
 		}
 	}
 </style>

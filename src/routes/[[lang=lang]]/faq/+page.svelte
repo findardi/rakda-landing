@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { appUrl } from '$lib/app-url';
+	import TrialCta from '$lib/components/TrialCta.svelte';
 	import { getI18n } from '$lib/i18n/context';
 	import { localePath } from '$lib/i18n';
 	import { jsonLd } from '$lib/seo';
@@ -94,7 +94,7 @@
 				<h2 id="faq-close-h">{t('faq.close.title')}</h2>
 				<p>{t('faq.close.body')}</p>
 				<div class="act">
-					<a class="btn btn-primary" href={appUrl('/register')}>{t('faq.close.cta')}</a>
+					<TrialCta label={t('faq.close.cta')} />
 					<a class="back" href={localePath(locale)}>{t('faq.close.back')}</a>
 				</div>
 			</section>

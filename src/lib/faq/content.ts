@@ -98,6 +98,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
 			},
 			{
 				id: 'perlu-pelatihan',
+				ref: 'setup',
 				q: { id: 'Apakah saya perlu pelatihan?', en: 'Do I need training?' },
 				a: {
 					id: 'Tidak. Rakda dirancang untuk disiapkan sendiri: tiga peran yang tetap (Pemilik, Admin, Tamu), izin per folder yang mengalir ke subfolder, dan template yang menyusun folder untuk Anda. Tidak ada jadwal demo yang harus ditunggu.',

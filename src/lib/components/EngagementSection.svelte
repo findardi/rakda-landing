@@ -48,28 +48,37 @@
 						<dt>{t('eng.longest')}</dt>
 						<dd class="font-mono">{t('eng.page', { n: maxIdx + 1 })} · {dwell(max)}</dd>
 					</div>
+					<div>
+						<dt>{t('eng.read')}</dt>
+						<dd class="font-mono">{t('eng.pagesRead', { read, total: DWELL.length })}</dd>
+					</div>
 				</dl>
 			</figcaption>
-			<ol class="bars" aria-label={t('eng.pagesRead', { read, total: DWELL.length })}>
+			<!-- The drawn chart is decoration for sighted readers; the table below is the data. -->
+			<ol class="bars" aria-hidden="true">
 				{#each DWELL as s, i (i)}
 					<li>
-						<button
-							type="button"
+						<span
 							class="bar"
 							class:unread={s === 0}
 							class:max={i === maxIdx}
 							style:--h="{Math.max(2, (s / max) * 100)}%"
-							aria-label="{t('eng.pageLong', { n: i + 1 })}: {dwell(s)}"
 						>
 							<span class="tip font-mono">{dwell(s)}</span>
-						</button>
-						<span class="tick font-mono" aria-hidden="true">{i + 1}</span>
+						</span>
+						<span class="tick font-mono">{i + 1}</span>
 					</li>
 				{/each}
 			</ol>
-			<p class="legend">
-				{t('eng.pagesRead', { read, total: DWELL.length })}. {t('eng.legend')}
-			</p>
+			<table class="sr-only">
+				<caption>{t('eng.pagesRead', { read, total: DWELL.length })}</caption>
+				<tbody>
+					{#each DWELL as s, i (i)}
+						<tr><th scope="row">{t('eng.pageLong', { n: i + 1 })}</th><td>{dwell(s)}</td></tr>
+					{/each}
+				</tbody>
+			</table>
+			<p class="legend">{t('eng.legend')}</p>
 		</figure>
 	</div>
 </section>
@@ -83,7 +92,7 @@
 	}
 	.facts {
 		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 0.75rem 1.5rem;
 		margin-bottom: 1.5rem;
 		font-size: 0.8125rem;
@@ -118,24 +127,22 @@
 	}
 	.bar {
 		position: relative;
+		display: block;
 		width: 100%;
 		height: var(--h);
-		border: 0;
-		padding: 0;
 		background: var(--color-primary);
 		border-radius: 3px 3px 0 0;
-		cursor: default;
 		transition: background-color 150ms ease-out;
 	}
+	/* An unread page has no bar; the baseline rule alone marks its place. */
 	.bar.unread {
-		background: var(--color-line-strong);
+		height: 0;
+		background: transparent;
 	}
-	.bar:hover,
-	.bar:focus-visible {
+	.bar:hover {
 		background: var(--color-primary-strong);
 	}
-	.bar.unread:hover,
-	.bar.unread:focus-visible {
+	.bar.unread:hover {
 		background: var(--color-muted);
 	}
 	.tip {
@@ -154,7 +161,6 @@
 		transition: opacity 150ms ease-out;
 	}
 	.bar:hover .tip,
-	.bar:focus-visible .tip,
 	.bar.max .tip {
 		opacity: 1;
 	}
@@ -181,13 +187,14 @@
 		font-size: 0.75rem;
 		line-height: 1.5;
 		color: var(--color-muted);
+		max-width: 60ch;
 	}
 	@media (max-width: 767px) {
 		.card {
 			padding: 1rem;
 		}
 		.facts {
-			grid-template-columns: 1fr;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 		.bars li:not(:nth-child(6n + 1)) .tick {
 			visibility: hidden;

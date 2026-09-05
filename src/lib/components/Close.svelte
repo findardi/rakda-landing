@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { appConfigured, appUrl } from '$lib/app-url';
+	import { appUrl } from '$lib/app-url';
 	import { getI18n } from '$lib/i18n/context';
+	import TrialCta from './TrialCta.svelte';
 
 	const { t } = getI18n();
+	const login = appUrl('/login');
 </script>
 
 <section id="trial" class="section close" aria-labelledby="close-h">
@@ -10,12 +12,11 @@
 		<h2 id="close-h" class="title">{t('close.title')}</h2>
 		<p class="body">{t('close.body')}</p>
 		<div class="act">
-			<a class="btn btn-primary big" href={appUrl('/register')}>{t('close.cta')}</a>
-			<a class="signin" href={appUrl('/login')}>{t('close.signIn')}</a>
+			<TrialCta label={t('close.cta')} size="lg" />
+			{#if login}
+				<a class="signin" href={login}>{t('close.signIn')}</a>
+			{/if}
 		</div>
-		{#if !appConfigured}
-			<p class="unconfigured font-mono">{t('close.unconfigured')}</p>
-		{/if}
 	</div>
 </section>
 
@@ -50,22 +51,12 @@
 		gap: 0.875rem;
 		margin-top: 2rem;
 	}
-	.big {
-		min-height: 3rem;
-		padding-inline: 1.5rem;
-		font-size: 1rem;
-	}
 	.signin {
 		font-size: 0.875rem;
 		color: var(--color-ink-2);
 	}
 	.signin:hover {
 		color: var(--color-ink);
-	}
-	.unconfigured {
-		margin-top: 1.5rem;
-		font-size: 0.6875rem;
-		color: var(--color-muted);
 	}
 	@media (max-width: 767px) {
 		.close {

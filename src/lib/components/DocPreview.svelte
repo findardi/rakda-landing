@@ -23,7 +23,7 @@
 	let title = $derived(folder.doc[locale].replace(/\.pdf$/i, ''));
 </script>
 
-<section class="preview" aria-live="polite">
+<section class="preview">
 	<header class="head">
 		<p class="who">
 			<span class="label">{t('preview.viewingAs')}</span>
@@ -36,8 +36,8 @@
 	</header>
 
 	{#if !cell.view}
-		<div class="forbidden" role="status">
-			<p class="ftitle">{t('preview.forbidden.title')}</p>
+		<div class="forbidden">
+			<p class="ftitle">{t('preview.forbidden.title', { group: groupName })}</p>
 			<p class="fbody">
 				{t('preview.forbidden.body', { group: groupName, folder: folder.name[locale] })}
 			</p>
@@ -48,7 +48,7 @@
 				<p class="conf font-mono">
 					{t('preview.confidential')} · v1 · {folder.name[locale]}
 				</p>
-				<h3 class="dtitle">{title}</h3>
+				<p class="dtitle">{title}</p>
 				<p class="excerpt">{folder.excerpt[locale]}</p>
 				<table class="dtable">
 					<tbody>
@@ -57,7 +57,7 @@
 						{/each}
 					</tbody>
 				</table>
-				<p class="fine">{t('preview.doc')}</p>
+				<p class="fine font-mono">{t('preview.doc')}</p>
 			</article>
 			{#key `${folder.id}-${groupName}`}
 				{#if cell.watermark}
@@ -192,6 +192,7 @@
 	.fine {
 		margin-top: 0.625rem;
 		font-size: 0.625rem;
+		letter-spacing: 0.08em;
 		color: var(--color-muted);
 	}
 	.wm {
@@ -267,5 +268,68 @@
 		line-height: 1.4;
 		color: var(--color-muted);
 		max-width: 26ch;
+	}
+	/* Inside the stacked layout's bottom sheet the page is shorter: stamp, title,
+	   two lines of excerpt, and the watermark still burning across. */
+	@media (max-width: 1023px) {
+		.page,
+		.forbidden {
+			height: 11rem;
+		}
+		.doc {
+			padding: 0.875rem 1rem;
+		}
+		.dtable,
+		.fine {
+			display: none;
+		}
+		.excerpt {
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			line-clamp: 2;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			margin-bottom: 0;
+		}
+		.head {
+			margin-bottom: 0.5rem;
+		}
+	}
+	@media (max-width: 767px) {
+		.preview {
+			padding: 0.75rem;
+		}
+		.head {
+			gap: 0.125rem;
+			margin-bottom: 0.375rem;
+		}
+		.docname {
+			flex: 1 1 auto;
+			min-width: 0;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		.page,
+		.forbidden {
+			height: 7.5rem;
+		}
+		.forbidden {
+			padding: 1rem;
+		}
+		.foot {
+			margin-top: 0.375rem;
+			align-items: center;
+		}
+		.hint {
+			display: none;
+		}
+	}
+	/* Short phones: the sheet gives the matrix a little more room. */
+	@media (max-width: 767px) and (max-height: 700px) {
+		.page,
+		.forbidden {
+			height: 6.5rem;
+		}
 	}
 </style>

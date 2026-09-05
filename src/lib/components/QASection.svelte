@@ -125,6 +125,14 @@
 		color: var(--color-ink);
 		font-weight: 500;
 	}
+	/* The guest silos show what each side sees; the owner's queue is the reading
+	   path, so the same question in a guest silo is set one step lighter. */
+	.silo:not(.owner) .q {
+		color: var(--color-ink-3);
+	}
+	.silo:not(.owner) .a {
+		color: var(--color-muted);
+	}
 	.row {
 		display: flex;
 		gap: 0.75rem;
@@ -150,6 +158,7 @@
 	}
 	.tools {
 		display: flex;
+		flex-wrap: wrap;
 		gap: 0.5rem;
 		margin-top: 1rem;
 	}

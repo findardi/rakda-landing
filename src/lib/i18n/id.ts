@@ -10,13 +10,19 @@ export const id = {
 	'nav.lang': 'EN',
 	'nav.langAria': 'Switch to English',
 
+	'cta.notify': 'Beritahu saya saat uji coba dibuka',
+	'cta.notify.short': 'Kabari saya',
+	'cta.notify.subject': 'Beritahu saya saat uji coba Rakda dibuka',
+	'cta.soon': 'Uji coba 30 hari dibuka segera.',
+
 	'hero.h1': 'Siapa boleh melihat apa. Anda yang menentukan.',
 	'hero.sub':
 		'Rakda adalah ruang data untuk dokumen deal: hak akses per grup per folder, watermark di setiap halaman yang dibuka, dan jejak aktivitas yang tidak bisa dihapus siapa pun.',
 	'hero.cta': 'Mulai uji coba 30 hari',
 	'hero.ctaHint': 'Tanpa jadwal demo. Ruang pertama siap dalam hitungan menit.',
-	'hero.tryHint':
-		'Coba sendiri: nyalakan atau matikan izin di kisi ini. Pratinjau di kanan mengikuti.',
+	'hero.tryHint': 'Coba sendiri: nyalakan atau matikan izin di kisi ini.',
+	'hero.tryHint.wide': 'Pratinjau di kanan mengikuti.',
+	'hero.tryHint.narrow': 'Pratinjau di bawah mengikuti.',
 
 	'grid.template': 'Template Due diligence M&A',
 	'grid.synthetic': 'ruang contoh · data fiktif',
@@ -26,12 +32,20 @@ export const id = {
 	'grid.perm.download': 'Unduh',
 	'grid.perm.original': 'Unduh PDF tanpa watermark',
 	'grid.cellAria': '{perm} untuk {group} di folder {folder}',
+	'grid.tip.view': 'Lihat: grup ini bisa membuka dokumen di viewer.',
+	'grid.tip.watermark':
+		'Watermark: identitas pembaca dibakar ke setiap halaman yang dibuka. Mematikan Unduh PDF tanpa watermark.',
+	'grid.tip.download': 'Unduh: PDF ber-watermark. Menyalakan Lihat.',
+	'grid.tip.original':
+		'Unduh PDF tanpa watermark: rendisi bersih. Menyalakan Unduh, mematikan Watermark.',
 	'grid.rule': 'Unduh PDF tanpa watermark menyalakan Unduh; Unduh dan watermark menyalakan Lihat.',
 	'grid.exclusive':
 		'Watermark dan unduh tanpa watermark tidak bisa menyala bersamaan: menandai layar sambil melepas berkas bersih tidak melindungi apa pun.',
 	'grid.flow': 'Akses mengalir ke seluruh isi folder, termasuk subfolder.',
 	'grid.reset': 'Kembalikan pengaturan awal',
 	'grid.groupTabs': 'Pilih grup',
+	'grid.keys':
+		'Kisi ini satu perhentian Tab: gunakan tombol panah untuk berpindah sel, Spasi untuk mengubah izin.',
 
 	'preview.viewingAs': 'Dilihat sebagai',
 	'preview.doc': 'Contoh dokumen',
@@ -40,13 +54,14 @@ export const id = {
 	'preview.watermarked': 'Ber-watermark',
 	'preview.protected':
 		'Tampilan aman: setiap halaman diberi watermark identitas pembaca dan tidak pernah dikirim sebagai berkas asli.',
-	'preview.forbidden.title': 'Anda tidak punya akses',
+	'preview.forbidden.title': '{group} tidak punya akses',
 	'preview.forbidden.body':
 		'{group} tidak bisa melihat folder “{folder}”. Dokumen di dalamnya tidak muncul di daftar mereka sama sekali.',
 	'preview.download.marked': 'Unduh PDF',
 	'preview.download.markedHint': '{n} halaman, dengan watermark. Tanpa lapisan teks.',
 	'preview.download.clean': 'Unduh PDF tanpa watermark',
-	'preview.download.cleanHint': 'Rendisi bersih. Berkas asli tetap tidak pernah keluar.',
+	'preview.download.cleanHint':
+		'Rendisi bersih, tanpa watermark. Berkas asli tetap tidak pernah keluar.',
 	'preview.download.off': 'Unduhan dimatikan untuk {group}. Dokumen hanya bisa dibaca di viewer.',
 	'preview.wmAria': 'Watermark di setiap halaman: {text}',
 
@@ -59,6 +74,8 @@ export const id = {
 	'activity.on': 'menyalakan {perm} untuk {group} di folder “{folder}”',
 	'activity.off': 'mematikan {perm} untuk {group} di folder “{folder}”',
 	'activity.viewed': 'membuka dokumen “{doc}” (v1)',
+	'activity.navigated': 'kembali ke pengaturan sebelumnya',
+	'activity.reset': 'mengembalikan pengaturan awal',
 	'activity.downloaded.marked': 'mengunduh dokumen “{doc}” (v1, dengan watermark)',
 	'activity.downloaded.clean': 'mengunduh dokumen “{doc}” (v1, tanpa watermark)',
 
@@ -90,6 +107,7 @@ export const id = {
 	'eng.doc': 'Dokumen',
 	'eng.total': 'Total membaca',
 	'eng.longest': 'Terlama',
+	'eng.read': 'Dibuka',
 	'eng.page': 'hal. {n}',
 	'eng.pageLong': 'Halaman {n}',
 	'eng.dwell': '{m} mnt {s} dtk',
@@ -132,12 +150,13 @@ export const id = {
 	'sec.desc': 'Klaim keamanan yang bisa dibuktikan di kode, dan batas yang kami sebut apa adanya.',
 	'sec.do': 'Yang kami lakukan',
 	'sec.dont': 'Yang tidak kami klaim',
+	'sec.notClaimed': 'tidak diklaim',
 	'sec.do.1.t': 'Watermark dibakar ke piksel',
 	'sec.do.1.b':
 		'Setiap kali halaman dibuka, identitas pembaca, waktu per menit, dan alamat IP dibakar ke gambar halaman. Tidak ada alat PDF yang bisa mengangkatnya.',
 	'sec.do.2.t': 'Berkas asli tidak pernah keluar',
 	'sec.do.2.b':
-		'Bahkan pemilik ruang menerima rendisi, bukan byte yang diunggah. “Tanpa watermark” berarti rendisi bersih.',
+		'Bahkan pemilik ruang menerima rendisi (salinan yang dirender ulang), bukan berkas yang diunggah. “Tanpa watermark” berarti rendisi bersih.',
 	'sec.do.3.t': 'Jejak aktivitas hanya-tambah',
 	'sec.do.3.b':
 		'Nama dan aktor dibekukan saat dicatat. Tamu tidak pernah melihat aktivitas apa pun, termasuk miliknya sendiri.',
@@ -148,10 +167,10 @@ export const id = {
 	'sec.do.5.b': 'Dokumen dan basis data berada di Indonesia.',
 	'sec.do.6.t': 'Keamanan tidak dijual per paket',
 	'sec.do.6.b':
-		'Mode privasi, pengerasan viewer, dan watermark tampilan ada di semua paket. Gerbang paket tidak pernah mengurangi keamanan siapa pun.',
+		'Mode privasi, pengerasan viewer (klik kanan dan cetak dimatikan, layar ditutup begitu jendela tidak aktif), dan watermark tampilan ada di semua paket. Gerbang paket tidak pernah mengurangi keamanan siapa pun.',
 	'sec.dont.1.t': 'Mencegah tangkapan layar',
 	'sec.dont.1.b':
-		'Tidak ada yang bisa. Mode privasi menyamarkan halaman saat jendela kehilangan fokus, dan watermark memastikan tangkapan apa pun membawa identitas pengambilnya.',
+		'Tidak ada yang bisa. Mode privasi menyamarkan halaman begitu jendela tidak lagi aktif, dan watermark memastikan tangkapan apa pun membawa identitas pengambilnya.',
 	'sec.dont.2.t': 'Mencabut akses seketika',
 	'sec.dont.2.b':
 		'Halaman yang sudah dimuat di browser tamu tidak bisa ditarik kembali. Pencabutan berlaku untuk pembukaan berikutnya.',
@@ -161,12 +180,40 @@ export const id = {
 	'sec.dont.4.b':
 		'Unduhan ber-watermark adalah raster: tanpa lapisan teks, lebih besar, maksimum 750 halaman. Di atas itu, baca di viewer.',
 
+	'setup.title': 'Siapkan sendiri, pakai hari ini juga.',
+	'setup.desc':
+		'Tanpa jadwal demo, tanpa pelatihan, tanpa panggilan sales. Daftar, beri nama ruang, terapkan template, dan ruang sudah bisa dipakai. Enam langkah berikut adalah seluruh prosesnya.',
+	'setup.steps': 'Langkah penyiapan ruang',
+	'setup.1.t': 'Buat akun',
+	'setup.1.b':
+		'Email dan kata sandi, diverifikasi dengan kode 6 digit. Atau masuk dengan Google atau GitHub.',
+	'setup.1.art': 'Kode 6 digit dikirim ke',
+	'setup.2.t': 'Beri nama ruang',
+	'setup.2.b':
+		'Satu nama, deskripsi opsional. Ruang lahir dalam Persiapan: privat, dan tamu belum dapat membukanya.',
+	'setup.3.t': 'Terapkan template',
+	'setup.3.b':
+		'Pilih satu dari lima template, satu per jenis deal. Folder ditambahkan sekaligus dan tidak pernah mengganti yang sudah ada.',
+	'setup.4.t': 'Unggah dokumen',
+	'setup.4.b':
+		'Unggah ke folder mana pun. Unggahan besar bisa dilanjutkan, bukan diulang dari awal; versi sebelumnya tetap tersimpan.',
+	'setup.pages': '{n} halaman',
+	'setup.5.t': 'Buat grup, atur akses folder',
+	'setup.5.b':
+		'Izin diberikan ke grup, bukan orang per orang: lihat, watermark, unduh, atau unduh asli, per folder, dan mengalir ke subfolder.',
+	'setup.5.art': '{group} di folder {folder}',
+	'setup.5.state': 'Lihat dan watermark nyala; unduh mati.',
+	'setup.6.t': 'Undang tamu, buka ruang',
+	'setup.6.b':
+		'Satu email masuk ke satu grup, dengan atau tanpa batas masa akses. Tekan Buka ruang; tamu masuk sesuai izin grupnya. Ruang yang sudah dibuka tidak kembali ke Persiapan.',
+	'setup.6.until': 'sampai {date}',
+	'setup.6.open': 'Buka ruang',
+
 	'close.title': 'Ruang data aman untuk dokumen deal Anda.',
 	'close.body':
 		'Dibangun untuk dokumen rahasia. Akses terkontrol dan teraudit, dari persiapan sampai arsip.',
 	'close.cta': 'Mulai uji coba 30 hari',
 	'close.signIn': 'Sudah punya akun? Masuk',
-	'close.unconfigured': 'Tautan aplikasi belum diatur untuk halaman ini.',
 
 	'faq.metaTitle': 'Pertanyaan umum — Rakda',
 	'faq.metaDescription':
@@ -182,6 +229,7 @@ export const id = {
 	'faq.ref.templates': 'Template',
 	'faq.ref.lifecycle': 'Siklus ruang',
 	'faq.ref.security': 'Keamanan',
+	'faq.ref.setup': 'Penyiapan',
 	'faq.close.title': 'Cukup jelas?',
 	'faq.close.body': 'Ruang pertama siap dalam hitungan menit. Uji coba 30 hari, tanpa jadwal demo.',
 	'faq.close.cta': 'Mulai uji coba 30 hari',
