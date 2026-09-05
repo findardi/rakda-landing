@@ -16,7 +16,7 @@ export function localizedPaths(path: string): Record<Locale, string> {
 	return { id: clean || '/', en: `/en${clean}` };
 }
 
-export const PAGES = ['/', '/faq'] as const;
+export const PAGES = ['/', '/faq', '/privacy', '/terms', '/contact'] as const;
 
 /** `<` is escaped so a JSON-LD script can never close itself. */
 export function jsonLd(data: unknown): string {

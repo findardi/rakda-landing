@@ -5,6 +5,7 @@
 	import { ACCESS_UNTIL, FOLDERS, GROUPS, ROOM_NAME, TEMPLATES } from '$lib/demo/data';
 	import { PERMS, type Cell } from '$lib/demo/permissions';
 	import PermIcon from './PermIcon.svelte';
+	import SimBadge from './SimBadge.svelte';
 
 	const { t, locale } = getI18n();
 
@@ -13,9 +14,8 @@
 	const steps = [1, 2, 3, 4, 5, 6] as const;
 
 	// Every artifact below is a state the app really shows at that step, drawn
-	// with the same demonstration data as the grid. Digits and the address are invented.
-	const SIGNUP_EMAIL = 'anda@perusahaan.example';
-	const OTP = ['4', '8', '2', '0', '1', '9'] as const;
+	// with the same demonstration data as the grid. Step 1 is told in words: a
+	// mock verification screen reads as a phishing target to safe-browsing scanners.
 	const tpl = TEMPLATES[0];
 	const docs = [
 		{ folder: FOLDERS[1], version: 1 },
@@ -36,6 +36,7 @@
 		</div>
 
 		<div class="content">
+			<SimBadge />
 			<ol class="steps" aria-label={t('setup.steps')}>
 				{#each steps as n (n)}
 					<li class="step">
@@ -46,14 +47,12 @@
 
 						<div class="art">
 							{#if n === 1}
-								<p class="artlabel">
-									{t('setup.1.art')} <span class="mail font-mono">{SIGNUP_EMAIL}</span>
-								</p>
-								<span class="otp" aria-hidden="true">
-									{#each OTP as d, i (i)}
-										<span class="digit font-mono" class:caret={i === OTP.length - 1}>{d}</span>
-									{/each}
-								</span>
+								<p class="artlabel">{t('setup.1.art')}</p>
+								<ol class="flow">
+									<li>{t('setup.1.f1')}</li>
+									<li>{t('setup.1.f2')}</li>
+									<li>{t('setup.1.f3')}</li>
+								</ol>
 							{:else if n === 2}
 								<div class="room">
 									<span class="tile font-mono" aria-hidden="true">PC</span>
@@ -186,11 +185,6 @@
 		line-height: 1.5;
 		color: var(--color-muted);
 	}
-	.mail {
-		font-size: 0.75rem;
-		color: var(--color-ink-2);
-		overflow-wrap: anywhere;
-	}
 	.row {
 		display: flex;
 		flex-wrap: wrap;
@@ -214,33 +208,39 @@
 		gap: 0.5rem;
 	}
 
-	/* 1 · the verification code: six digits, the caret after the last, one segmented frame. */
-	.otp {
-		display: inline-flex;
-		border: 1px solid var(--color-line-strong);
-		border-radius: var(--radius-field);
-		background: var(--color-surface);
-		overflow: hidden;
-	}
-	.digit {
+	/* 1 · the sign-up flow in words: three numbered stops, no screen imitation. */
+	.flow {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
-		justify-content: center;
-		gap: 2px;
-		width: 2rem;
-		height: 2.25rem;
-		font-size: 0.875rem;
-		color: var(--color-ink);
-		border-right: 1px solid var(--color-line);
+		gap: 0.375rem 0.5rem;
+		font-size: 0.8125rem;
+		line-height: 1.4;
+		color: var(--color-ink-2);
+		counter-reset: flow;
 	}
-	.digit:last-child {
-		border-right: 0;
+	.flow li {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.375rem;
 	}
-	.caret::after {
-		content: '';
-		width: 1px;
-		height: 1rem;
-		background: var(--color-primary);
+	.flow li::before {
+		counter-increment: flow;
+		content: counter(flow);
+		display: inline-grid;
+		place-items: center;
+		width: 1.25rem;
+		height: 1.25rem;
+		flex: none;
+		font-family: var(--font-mono);
+		font-size: 0.6875rem;
+		color: var(--color-muted);
+		border: 1px solid var(--color-line-strong);
+		border-radius: 999px;
+	}
+	.flow li:not(:last-child)::after {
+		content: '→';
+		color: var(--color-muted);
 	}
 
 	/* 2 · the room as it appears on the list the moment it is created. */

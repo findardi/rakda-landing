@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SimBadge from './SimBadge.svelte';
 	import { getI18n } from '$lib/i18n/context';
 	import { secnum } from '$lib/refs';
 	import { DWELL, FOLDERS, GROUPS } from '$lib/demo/data';
@@ -31,6 +32,7 @@
 
 		<figure class="card">
 			<figcaption>
+				<SimBadge />
 				<dl class="facts">
 					<div>
 						<dt>{t('eng.reader')}</dt>

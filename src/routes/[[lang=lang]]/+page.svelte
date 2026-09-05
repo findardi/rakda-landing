@@ -11,11 +11,27 @@
 	import Close from '$lib/components/Close.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Seo from '$lib/components/Seo.svelte';
+	import { absolute, jsonLd } from '$lib/seo';
+	import { ORG } from '$lib/legal/content';
 
 	const { t } = getI18n();
+
+	const home = absolute('/');
+	const ld = home
+		? jsonLd({
+				'@context': 'https://schema.org',
+				'@type': 'Organization',
+				name: ORG.brand,
+				legalName: ORG.legalName,
+				url: home,
+				logo: absolute('/apple-touch-icon.png'),
+				email: ORG.email,
+				address: { '@type': 'PostalAddress', addressLocality: 'Jakarta', addressCountry: 'ID' }
+			})
+		: undefined;
 </script>
 
-<Seo title={t('meta.title')} description={t('meta.description')} path="/" />
+<Seo title={t('meta.title')} description={t('meta.description')} path="/" {ld} />
 
 <Nav quietWhileHero />
 <main id="main">

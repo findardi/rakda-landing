@@ -20,6 +20,7 @@
 	import TrialCta from './TrialCta.svelte';
 	import DocPreview from './DocPreview.svelte';
 	import ActivityLine from './ActivityLine.svelte';
+	import SimBadge from './SimBadge.svelte';
 	import { setUrlSearch, startUrlSearchSync, urlSearch } from '$lib/url-search.svelte';
 	import { heroCta } from '$lib/hero-cta.svelte';
 
@@ -205,17 +206,6 @@
 		navigateTo(DEFAULT_GRID);
 		status = push({ actor: you, text: t('activity.reset') }) + '.';
 	}
-
-	function onDownload(clean: boolean) {
-		status =
-			push({
-				actor: group.reader,
-				mono: true,
-				text: t(clean ? 'activity.downloaded.clean' : 'activity.downloaded.marked', {
-					doc: folder.doc[locale]
-				})
-			}) + '.';
-	}
 </script>
 
 <section class="hero" aria-labelledby="hero-h">
@@ -232,6 +222,7 @@
 
 	<div class="wrap deck" id="access">
 		<div class="gridcol">
+			<SimBadge />
 			<div class="roomhead">
 				<p class="roomname">
 					<span class="secnum font-mono">{secnum('grid')}</span>
@@ -239,7 +230,6 @@
 					<span class="tpl">{t('grid.template')}</span>
 				</p>
 				<p class="meta">
-					<span class="synthetic font-mono">{t('grid.synthetic')}</span>
 					<button
 						type="button"
 						class="link-quiet resetbtn"
@@ -272,7 +262,7 @@
 			<p class="sr-only" aria-live="polite">{status}</p>
 		</div>
 		<aside class="side" class:stuck aria-label={t('preview.doc')}>
-			<DocPreview groupName={group.name[locale]} {folder} {cell} {stamp} ondownload={onDownload} />
+			<DocPreview groupName={group.name[locale]} {folder} {cell} {stamp} />
 			<div class="latest" aria-hidden="true">
 				<p class="ltitle">{t('activity.title')}</p>
 				<ol>
@@ -429,12 +419,6 @@
 		flex-wrap: wrap;
 		align-items: baseline;
 		gap: 0.125rem 1rem;
-	}
-	.synthetic {
-		font-size: 0.6875rem;
-		letter-spacing: 0.02em;
-		color: var(--color-muted);
-		white-space: nowrap;
 	}
 	.resetbtn {
 		font-size: 0.8125rem;

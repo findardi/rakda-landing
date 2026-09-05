@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { localePath, otherLocale } from '$lib/i18n';
 	import { getI18n } from '$lib/i18n/context';
+	import { ORG } from '$lib/legal/content';
 	import Brand from './Brand.svelte';
 
 	const { t, locale } = getI18n();
 	const other = otherLocale(locale);
+	const legal = ['privacy', 'terms', 'contact'] as const;
 </script>
 
 <footer class="foot">
@@ -13,11 +15,14 @@
 		<p class="synthetic">{t('footer.synthetic')}</p>
 		<p class="right">
 			<a href={localePath(locale, '', '/faq')}>{t('nav.faq')}</a>
+			{#each legal as slug (slug)}
+				<a href={localePath(locale, '', `/${slug}`)}>{t(`footer.${slug}`)}</a>
+			{/each}
 			<a href={localePath(other)} data-sveltekit-reload hreflang={other} lang={other}
 				>{t('footer.lang')}</a
 			>
-			<span class="rights font-mono">{t('footer.rights')}</span>
 		</p>
+		<p class="org font-mono">{t('footer.rights', { org: ORG.legalName })} · {ORG.address}</p>
 	</div>
 </footer>
 
@@ -29,7 +34,7 @@
 	.row {
 		display: grid;
 		grid-template-columns: auto minmax(0, 1fr) auto;
-		gap: 1.5rem 2.5rem;
+		gap: 1rem 2.5rem;
 		align-items: center;
 	}
 	.brand {
@@ -44,8 +49,9 @@
 	}
 	.right {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: baseline;
-		gap: 1.25rem;
+		gap: 0.5rem 1.25rem;
 		font-size: 0.8125rem;
 	}
 	.right a {
@@ -54,7 +60,8 @@
 	.right a:hover {
 		color: var(--color-ink);
 	}
-	.rights {
+	.org {
+		grid-column: 1 / -1;
 		font-size: 0.6875rem;
 		color: var(--color-muted);
 	}

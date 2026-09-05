@@ -2,19 +2,18 @@
 	import { getI18n } from '$lib/i18n/context';
 	import type { Folder } from '$lib/demo/data';
 	import type { Cell } from '$lib/demo/permissions';
+	import SimBadge from './SimBadge.svelte';
 
 	let {
 		groupName,
 		folder,
 		cell,
-		stamp,
-		ondownload
+		stamp
 	}: {
 		groupName: string;
 		folder: Folder;
 		cell: Cell;
 		stamp: string;
-		ondownload: (clean: boolean) => void;
 	} = $props();
 
 	const { t, locale } = getI18n();
@@ -25,6 +24,7 @@
 
 <section class="preview">
 	<header class="head">
+		<SimBadge size="sm" />
 		<p class="who">
 			<span class="label">{t('preview.viewingAs')}</span>
 			<span class="group font-mono">{groupName}</span>
@@ -76,22 +76,18 @@
 					<span class="chip chip-primary">{t('preview.watermarked')}</span>
 				{/if}
 			</div>
+			<!-- Static labels only: nothing in the demo looks like it downloads a file. -->
 			<div class="dl">
 				{#if cell.original}
-					<button type="button" class="btn btn-quiet btn-sm" onclick={() => ondownload(true)}
-						>{t('preview.download.clean')}</button
-					>
+					<span class="chip dlabel">{t('preview.download.clean', { group: groupName })}</span>
 					<p class="hint">{t('preview.download.cleanHint')}</p>
 				{:else if cell.download}
-					<button type="button" class="btn btn-quiet btn-sm" onclick={() => ondownload(false)}
-						>{t('preview.download.marked')}</button
-					>
+					<span class="chip dlabel">{t('preview.download.marked', { group: groupName })}</span>
 					<p class="hint">{t('preview.download.markedHint', { n: folder.pages })}</p>
 				{:else}
-					<button type="button" class="btn btn-quiet btn-sm" disabled
-						>{t('preview.download.marked')}</button
+					<span class="chip dlabel off">{t('preview.download.offLabel', { group: groupName })}</span
 					>
-					<p class="hint">{t('preview.download.off', { group: groupName })}</p>
+					<p class="hint">{t('preview.download.off')}</p>
 				{/if}
 			</div>
 		</footer>
@@ -262,6 +258,17 @@
 		align-items: flex-end;
 		gap: 0.375rem;
 		text-align: right;
+	}
+	.dlabel {
+		height: auto;
+		min-height: 1.5rem;
+		padding-block: 0.125rem;
+		white-space: normal;
+		text-align: right;
+	}
+	.dlabel.off {
+		color: var(--color-muted);
+		border-style: dashed;
 	}
 	.hint {
 		font-size: 0.6875rem;

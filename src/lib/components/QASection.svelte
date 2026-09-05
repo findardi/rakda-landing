@@ -2,6 +2,7 @@
 	import { getI18n } from '$lib/i18n/context';
 	import { secnum } from '$lib/refs';
 	import { GROUPS } from '$lib/demo/data';
+	import SimBadge from './SimBadge.svelte';
 
 	const { t, locale } = getI18n();
 
@@ -29,6 +30,7 @@
 		</div>
 
 		<div class="content">
+			<SimBadge />
 			<div class="silos">
 				{#each silos as silo (silo.who)}
 					<div class="silo" class:owner={silo.owner}>

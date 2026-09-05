@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SimBadge from './SimBadge.svelte';
 	import { getI18n } from '$lib/i18n/context';
 	import { secnum } from '$lib/refs';
 	import { FOLDERS, ROOM_NAME } from '$lib/demo/data';
@@ -45,6 +46,7 @@
 		</div>
 
 		<div class="content">
+			<SimBadge />
 			<ol class="states">
 				{#each states as s, i (s.key)}
 					<li class="state" class:active={s.key === 'active'}>

@@ -25,7 +25,6 @@ export const id = {
 	'hero.tryHint.narrow': 'Pratinjau di bawah mengikuti.',
 
 	'grid.template': 'Template Due diligence M&A',
-	'grid.synthetic': 'ruang contoh · data fiktif',
 	'grid.folder': 'Folder',
 	'grid.perm.view': 'Lihat',
 	'grid.perm.watermark': 'Watermark',
@@ -57,12 +56,13 @@ export const id = {
 	'preview.forbidden.title': '{group} tidak punya akses',
 	'preview.forbidden.body':
 		'{group} tidak bisa melihat folder “{folder}”. Dokumen di dalamnya tidak muncul di daftar mereka sama sekali.',
-	'preview.download.marked': 'Unduh PDF',
+	'preview.download.marked': 'Unduh PDF (tersedia untuk {group})',
 	'preview.download.markedHint': '{n} halaman, dengan watermark. Tanpa lapisan teks.',
-	'preview.download.clean': 'Unduh PDF tanpa watermark',
+	'preview.download.clean': 'Unduh PDF tanpa watermark (tersedia untuk {group})',
 	'preview.download.cleanHint':
 		'Rendisi bersih, tanpa watermark. Berkas asli tetap tidak pernah keluar.',
-	'preview.download.off': 'Unduhan dimatikan untuk {group}. Dokumen hanya bisa dibaca di viewer.',
+	'preview.download.offLabel': 'Unduh PDF (dimatikan untuk {group})',
+	'preview.download.off': 'Dokumen hanya bisa dibaca di viewer.',
 	'preview.wmAria': 'Watermark di setiap halaman: {text}',
 
 	'activity.title': 'Aktivitas',
@@ -76,8 +76,6 @@ export const id = {
 	'activity.viewed': 'membuka dokumen “{doc}” (v1)',
 	'activity.navigated': 'kembali ke pengaturan sebelumnya',
 	'activity.reset': 'mengembalikan pengaturan awal',
-	'activity.downloaded.marked': 'mengunduh dokumen “{doc}” (v1, dengan watermark)',
-	'activity.downloaded.clean': 'mengunduh dokumen “{doc}” (v1, tanpa watermark)',
 
 	'qa.title': 'Q&A per grup. Satu antrean untuk Anda.',
 	'qa.desc':
@@ -186,8 +184,11 @@ export const id = {
 	'setup.steps': 'Langkah penyiapan ruang',
 	'setup.1.t': 'Buat akun',
 	'setup.1.b':
-		'Email dan kata sandi, diverifikasi dengan kode 6 digit. Atau masuk dengan Google atau GitHub.',
-	'setup.1.art': 'Kode 6 digit dikirim ke',
+		'Daftar dengan email dan kata sandi, lalu verifikasi lewat kode yang dikirim ke email Anda. Akun Google atau GitHub juga bisa dipakai.',
+	'setup.1.art': 'Alur pendaftaran',
+	'setup.1.f1': 'Isi email',
+	'setup.1.f2': 'Kode verifikasi tiba di kotak masuk',
+	'setup.1.f3': 'Akun aktif',
 	'setup.2.t': 'Beri nama ruang',
 	'setup.2.b':
 		'Satu nama, deskripsi opsional. Ruang lahir dalam Persiapan: privat, dan tamu belum dapat membukanya.',
@@ -236,6 +237,18 @@ export const id = {
 	'faq.close.back': 'Lihat mekanismenya di halaman utama',
 	'footer.synthetic':
 		'Semua nama, dokumen, dan angka di halaman ini fiktif dan hanya untuk demonstrasi.',
+	'footer.privacy': 'Kebijakan Privasi',
+	'footer.terms': 'Ketentuan Layanan',
+	'footer.contact': 'Kontak',
 	'footer.lang': 'English',
-	'footer.rights': '© 2026 Rakda'
+	'footer.rights': '© 2026 {org}',
+
+	'sim.badge': 'SIMULASI — data fiktif',
+	'sim.aria':
+		'Blok ini simulasi dengan data fiktif. Tidak ada berkas, akun, atau unduhan sungguhan.',
+
+	'legal.updated': 'Diperbarui {date}',
+	'legal.org': 'Badan usaha',
+	'legal.address': 'Alamat',
+	'legal.email': 'Email'
 };

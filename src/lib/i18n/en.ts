@@ -27,7 +27,6 @@ export const en: Record<keyof typeof id, string> = {
 	'hero.tryHint.narrow': 'The preview below follows.',
 
 	'grid.template': 'M&A due diligence template',
-	'grid.synthetic': 'sample room · synthetic data',
 	'grid.folder': 'Folder',
 	'grid.perm.view': 'View',
 	'grid.perm.watermark': 'Watermark',
@@ -59,13 +58,13 @@ export const en: Record<keyof typeof id, string> = {
 	'preview.forbidden.title': '{group} has no access',
 	'preview.forbidden.body':
 		'{group} cannot see the folder “{folder}”. Its documents do not appear in their list at all.',
-	'preview.download.marked': 'Download PDF',
+	'preview.download.marked': 'Download PDF (available to {group})',
 	'preview.download.markedHint': '{n} pages, watermarked. No text layer.',
-	'preview.download.clean': 'Download clean PDF',
+	'preview.download.clean': 'Download clean PDF (available to {group})',
 	'preview.download.cleanHint':
 		'A clean rendition, no watermark. The original file still never leaves.',
-	'preview.download.off':
-		'Downloads are off for {group}. The document can only be read in the viewer.',
+	'preview.download.offLabel': 'Download PDF (off for {group})',
+	'preview.download.off': 'The document can only be read in the viewer.',
 	'preview.wmAria': 'Watermark on every page: {text}',
 
 	'activity.title': 'Activity',
@@ -79,8 +78,6 @@ export const en: Record<keyof typeof id, string> = {
 	'activity.viewed': 'opened document “{doc}” (v1)',
 	'activity.navigated': 'went back to a previous setup',
 	'activity.reset': 'restored the starting setup',
-	'activity.downloaded.marked': 'downloaded document “{doc}” (v1, watermarked)',
-	'activity.downloaded.clean': 'downloaded document “{doc}” (v1, clean)',
 
 	'qa.title': 'Q&A per group. One queue for you.',
 	'qa.desc':
@@ -189,8 +186,11 @@ export const en: Record<keyof typeof id, string> = {
 	'setup.steps': 'Room setup steps',
 	'setup.1.t': 'Create an account',
 	'setup.1.b':
-		'Email and password, verified with a 6-digit code. Or sign in with Google or GitHub.',
-	'setup.1.art': 'A 6-digit code is sent to',
+		'Sign up with email and password, then verify with a code sent to your inbox. A Google or GitHub account works too.',
+	'setup.1.art': 'Sign-up flow',
+	'setup.1.f1': 'Enter your email',
+	'setup.1.f2': 'A verification code arrives in your inbox',
+	'setup.1.f3': 'Account active',
 	'setup.2.t': 'Name the room',
 	'setup.2.b':
 		'One name, an optional description. The room is born in Preparation: private, and guests cannot open it yet.',
@@ -239,6 +239,18 @@ export const en: Record<keyof typeof id, string> = {
 	'faq.close.back': 'See the mechanics on the main page',
 	'footer.synthetic':
 		'Every name, document, and number on this page is fictional and for demonstration only.',
+	'footer.privacy': 'Privacy Policy',
+	'footer.terms': 'Terms of Service',
+	'footer.contact': 'Contact',
 	'footer.lang': 'Bahasa Indonesia',
-	'footer.rights': '© 2026 Rakda'
+	'footer.rights': '© 2026 {org}',
+
+	'sim.badge': 'SIMULATION — fictional data',
+	'sim.aria':
+		'This block is a simulation with fictional data. There is no real file, account, or download.',
+
+	'legal.updated': 'Updated {date}',
+	'legal.org': 'Legal entity',
+	'legal.address': 'Address',
+	'legal.email': 'Email'
 };

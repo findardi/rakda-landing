@@ -7,7 +7,7 @@
 		description,
 		path,
 		ld
-	}: { title: string; description: string; path: '/' | '/faq'; ld?: string } = $props();
+	}: { title: string; description: string; path: string; ld?: string } = $props();
 
 	const { locale } = getI18n();
 	let paths = $derived(localizedPaths(path));
@@ -22,6 +22,8 @@
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
 	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Rakda" />
+	<meta name="twitter:card" content="summary" />
 	<meta property="og:locale" content={locale === 'id' ? 'id_ID' : 'en_GB'} />
 	{#if canonical}
 		<link rel="canonical" href={canonical} />

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SimBadge from './SimBadge.svelte';
 	import { getI18n } from '$lib/i18n/context';
 	import { secnum } from '$lib/refs';
 	import { TEMPLATES, type TemplateNode } from '$lib/demo/data';
@@ -32,6 +33,7 @@
 		</div>
 
 		<div class="content">
+			<SimBadge />
 			<div class="gallery">
 				<div class="list" role="tablist" aria-label={t('tpl.pick')}>
 					{#each TEMPLATES as tp (tp.key)}
