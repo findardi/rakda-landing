@@ -22,17 +22,16 @@ bun run test:e2e   # playwright
 
 Copy `.env.example` to `.env` and set `PUBLIC_APP_URL` to the app origin. Until it is set, sign-in links are not rendered and the trial action falls back: with `PUBLIC_CONTACT_EMAIL` set it becomes a mailto asking to be told when the trial opens; with neither set it is a plain "opens soon" statement.
 
-## Deploy (Cloudflare Pages)
+## Deploy (Cloudflare Workers, static assets)
 
-Every route is prerendered, so the site is plain static files (`@sveltejs/adapter-static`).
+Every route is prerendered, so the site is plain static files (`@sveltejs/adapter-static`). `wrangler.jsonc` serves `build/` as Worker static assets; no server code runs.
 
-Cloudflare dashboard: Workers & Pages, Create, Pages, connect the GitHub repo, then:
+Cloudflare dashboard: Workers & Pages, Create, Import a repository, pick this repo, then:
 
-| Setting                | Value           |
-| ---------------------- | --------------- |
-| Framework preset       | SvelteKit       |
-| Build command          | `bun run build` |
-| Build output directory | `build`         |
-| Production branch      | `main`          |
+| Setting        | Value                 |
+| -------------- | --------------------- |
+| Project name   | `rakda-landing`       |
+| Build command  | `bun run build`       |
+| Deploy command | `npx wrangler deploy` |
 
-Node version comes from `.node-version`. Set the `PUBLIC_*` variables from `.env.example` under Settings, Environment variables (Production). They are read at build time, so redeploy after changing them.
+Node version comes from `.node-version`. Set the `PUBLIC_*` variables from `.env.example` under Settings, Build, Variables and secrets. They are read at build time, so redeploy after changing them.
