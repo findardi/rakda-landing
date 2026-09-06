@@ -96,19 +96,6 @@ export const en: Record<keyof typeof id, string> = {
 	'eng.title': 'You know which pages were read, and for how long.',
 	'eng.desc':
 		'Every document opening records page by page with its duration. Guests never see anyone’s activity, including their own.',
-	'eng.reader': 'Reader',
-	'eng.doc': 'Document',
-	'eng.total': 'Total reading',
-	'eng.longest': 'Longest',
-	'eng.read': 'Read',
-	'eng.page': 'p. {n}',
-	'eng.pageLong': 'Page {n}',
-	'eng.dwell': '{m} min {s} s',
-	'eng.dwellShort': '{s} s',
-	'eng.unread': 'not opened',
-	'eng.pagesRead': '{read} of {total} pages opened',
-	'eng.legend': 'Bar height = time the page stayed open. Pages without a bar were not opened.',
-	'eng.export': 'Export CSV',
 
 	'tpl.title': 'Start from a template, not an empty folder.',
 	'tpl.desc':
@@ -237,6 +224,11 @@ export const en: Record<keyof typeof id, string> = {
 	'footer.guides': 'Guides',
 	'footer.lang': 'Bahasa Indonesia',
 	'footer.rights': '© 2026 {org}',
+
+	'demo.access.t': 'Per-group permissions in the app',
+	'demo.access.n': 'Screen recording · 0:28 · no sound',
+	'demo.engagement.t': 'The pages-read report in the app',
+	'demo.engagement.n': 'Screen recording · 0:27 · no sound',
 
 	'sim.badge': 'SIMULATION — fictional data',
 	'sim.aria':

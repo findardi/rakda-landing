@@ -31,6 +31,7 @@
 	import DocPreview from './DocPreview.svelte';
 	import ActivityLine from './ActivityLine.svelte';
 	import SimBadge from './SimBadge.svelte';
+	import DemoVideo from './DemoVideo.svelte';
 	import { setUrlSearch, startUrlSearchSync, urlSearch } from '$lib/url-search.svelte';
 	import { heroCta } from '$lib/hero-cta.svelte';
 
@@ -312,6 +313,16 @@
 		<div class="actcol">
 			<ActivityLine {entries} />
 		</div>
+		<div class="reccol">
+			<DemoVideo
+				src="/video/demo-management-access-1788698462914.mp4"
+				poster="/video/demo-management-access-1788698462914.jpg"
+				width={1044}
+				height={568}
+				title={t('demo.access.t')}
+				note={t('demo.access.n')}
+			/>
+		</div>
 	</div>
 </section>
 
@@ -387,10 +398,11 @@
 		grid-template-columns: minmax(max-content, 1.3fr) minmax(19rem, 1fr);
 		grid-template-areas:
 			'grid side'
-			'grid act';
+			'grid act'
+			'rec rec';
 		/* The preview row is exactly its own height; the tall matrix column's extra
 		   height goes to the activity row, so the list sits directly under the preview. */
-		grid-template-rows: auto 1fr;
+		grid-template-rows: auto 1fr auto;
 		gap: 0 2.5rem;
 		align-items: start;
 		border-top: 1px solid var(--color-line);
@@ -398,6 +410,10 @@
 	}
 	.gridcol {
 		grid-area: grid;
+	}
+	.reccol {
+		grid-area: rec;
+		margin-top: 2.5rem;
 	}
 	.side {
 		grid-area: side;
@@ -524,6 +540,9 @@
 		}
 		.gridcol {
 			margin-bottom: 1.5rem;
+		}
+		.reccol {
+			margin-top: 2rem;
 		}
 		.sentinel {
 			display: block;

@@ -94,19 +94,6 @@ export const id = {
 	'eng.title': 'Anda tahu halaman mana yang dibaca, dan berapa lama.',
 	'eng.desc':
 		'Setiap pembukaan dokumen mencatat halaman demi halaman berikut durasinya. Tamu tidak pernah melihat aktivitas siapa pun, termasuk miliknya sendiri.',
-	'eng.reader': 'Pembaca',
-	'eng.doc': 'Dokumen',
-	'eng.total': 'Total membaca',
-	'eng.longest': 'Terlama',
-	'eng.read': 'Dibuka',
-	'eng.page': 'hal. {n}',
-	'eng.pageLong': 'Halaman {n}',
-	'eng.dwell': '{m} mnt {s} dtk',
-	'eng.dwellShort': '{s} dtk',
-	'eng.unread': 'tidak dibuka',
-	'eng.pagesRead': '{read} dari {total} halaman dibuka',
-	'eng.legend': 'Tinggi batang = lama halaman terbuka. Halaman tanpa batang tidak dibuka.',
-	'eng.export': 'Ekspor CSV',
 
 	'tpl.title': 'Mulai dari template, bukan folder kosong.',
 	'tpl.desc':
@@ -236,6 +223,11 @@ export const id = {
 	'footer.guides': 'Panduan',
 	'footer.lang': 'English',
 	'footer.rights': '© 2026 {org}',
+
+	'demo.access.t': 'Izin per grup di aplikasi',
+	'demo.access.n': 'Rekaman layar · 0:28 · tanpa suara',
+	'demo.engagement.t': 'Laporan halaman dibaca di aplikasi',
+	'demo.engagement.n': 'Rekaman layar · 0:27 · tanpa suara',
 
 	'sim.badge': 'SIMULASI — data fiktif',
 	'sim.aria':
