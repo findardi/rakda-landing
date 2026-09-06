@@ -9,9 +9,6 @@ export const PERMS: readonly Perm[] = ['view', 'watermark', 'download', 'origina
 export type Cell = Record<Perm, boolean>;
 export type Grid = Cell[][]; // [group][folder]
 
-export const GROUP_COUNT = 3;
-export const FOLDER_COUNT = 12;
-
 const BIT: Record<Perm, number> = { view: 1, watermark: 2, download: 4, original: 8 };
 
 export function normalize(c: Cell): Cell {
@@ -69,13 +66,16 @@ export function encodeGrid(g: Grid): string {
 
 const HEX = /^[0-9a-f]+$/;
 
+/** The grid's shape is the fallback's shape; anything else in the URL is ignored. */
 export function decodeGrid(s: string | null | undefined, fallback: Grid): Grid {
-	if (!s || s.length !== GROUP_COUNT * FOLDER_COUNT || !HEX.test(s)) return cloneGrid(fallback);
+	const G = fallback.length;
+	const F = fallback[0].length;
+	if (!s || s.length !== G * F || !HEX.test(s)) return cloneGrid(fallback);
 	const out: Grid = [];
-	for (let g = 0; g < GROUP_COUNT; g++) {
+	for (let g = 0; g < G; g++) {
 		const row: Cell[] = [];
-		for (let f = 0; f < FOLDER_COUNT; f++) {
-			row.push(nibbleToCell(parseInt(s[g * FOLDER_COUNT + f], 16)));
+		for (let f = 0; f < F; f++) {
+			row.push(nibbleToCell(parseInt(s[g * F + f], 16)));
 		}
 		out.push(row);
 	}
@@ -90,11 +90,20 @@ export function sameGrid(a: Grid, b: Grid): boolean {
 	return encodeGrid(a) === encodeGrid(b);
 }
 
-// Starting configuration of the sample room. Group order: Buyer A, Buyer B, Advisors.
-// Folder order follows the M&A due diligence template.
-const A = [7, 3, 3, 3, 3, 0, 3, 3, 3, 3, 3, 0]; // view+watermark; download on the overview; nothing on HR or closing
-const B = [3, 3, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0]; // an earlier-stage bidder sees four folders, all watermarked
-const ADV = [13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13]; // the seller's own advisors: view, download, clean
+// The landing grid shows two of the four permissions: View (always watermarked
+// here) and Download (a watermarked PDF). The full model is described on /fitur.
+export const HERO_PERMS: readonly Perm[] = ['view', 'download'] as const;
 
-export const DEFAULT_GRID: Grid = [A, B, ADV].map((row) => row.map(nibbleToCell));
+export function toggleMini(c: Cell, p: Perm): Cell {
+	const next = toggle(c, p);
+	return normalize({ ...next, watermark: next.view });
+}
+
+// Starting configuration of the sample room: two bidders over three folders
+// (Financials, Legal & corporate, HR; see HERO_FOLDERS). Buyer A downloads the
+// financials and reads legal; Buyer B, an earlier-stage bidder, reads financials only.
+const A = [7, 3, 0];
+const B = [3, 0, 0];
+
+export const DEFAULT_GRID: Grid = [A, B].map((row) => row.map(nibbleToCell));
 export const DEFAULT_ENCODED = encodeGrid(DEFAULT_GRID);

@@ -47,8 +47,8 @@ export const LEGAL: Record<LegalSlug, LegalDoc> = {
 				h: { id: 'Situs ini', en: 'This website' },
 				p: [
 					{
-						id: 'Halaman rakda.id tidak memakai cookie pelacak, analitik pihak ketiga, atau formulir. Semua nama, dokumen, dan angka di halaman ini fiktif; kisi izin dan pratinjau dokumen adalah simulasi yang berjalan di browser Anda dan tidak mengirim apa pun.',
-						en: 'The rakda.id pages use no tracking cookies, no third-party analytics, and no forms. Every name, document, and number on them is fictional; the permission grid and the document preview are simulations that run in your browser and send nothing.'
+						id: 'Halaman rakda.id tidak memakai cookie pelacak atau analitik pihak ketiga. Satu-satunya formulir adalah daftar tunggu: alamat email yang Anda kirim disimpan di Cloudflare (Workers KV) hanya untuk mengabari Anda saat uji coba dibuka, tidak dipakai untuk hal lain, dan dihapus atas permintaan ke {email}. Semua nama, dokumen, dan angka di halaman ini fiktif; kisi izin dan pratinjau dokumen adalah simulasi yang berjalan di browser Anda dan tidak mengirim apa pun.',
+						en: 'The rakda.id pages use no tracking cookies and no third-party analytics. The only form is the waitlist: the email address you submit is stored at Cloudflare (Workers KV) solely to tell you when the trial opens, is used for nothing else, and is deleted on request to {email}. Every name, document, and number on the pages is fictional; the permission grid and the document preview are simulations that run in your browser and send nothing.'
 					},
 					{
 						id: 'Jaringan pengiriman yang menyajikan situs (Cloudflare) menyimpan log teknis seperti alamat IP, waktu, dan halaman yang diminta, untuk keamanan dan ketersediaan.',

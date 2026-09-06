@@ -1,9 +1,10 @@
 import type { id } from './id';
 
 export const en: Record<keyof typeof id, string> = {
-	'meta.title': 'Rakda — A secure data room for your deal documents',
+	'meta.title':
+		'Rakda — Virtual Data Room (VDR) in Indonesia for M&A, Fundraising, and Due Diligence',
 	'meta.description':
-		'A virtual data room you set up yourself: access per group per folder, a watermark on every page, and an activity trail no one can erase. 30-day trial.',
+		'A virtual data room in Indonesia you set up yourself: per-group, per-folder access, a watermark on every page, an activity trail no one can erase. Data in Jakarta. No demo call, no sales.',
 
 	'nav.skip': 'Skip to content',
 	'nav.signIn': 'Sign in',
@@ -12,14 +13,9 @@ export const en: Record<keyof typeof id, string> = {
 	'nav.lang': 'ID',
 	'nav.langAria': 'Ganti ke Bahasa Indonesia',
 
-	'cta.notify': 'Tell me when the trial opens',
-	'cta.notify.short': 'Notify me',
-	'cta.notify.subject': 'Tell me when the Rakda trial opens',
-	'cta.soon': 'The 30-day trial opens soon.',
-
-	'hero.h1': 'Who sees what. You decide.',
+	'hero.h1': 'Stop sending deal documents through Google Drive.',
 	'hero.sub':
-		'Rakda is a data room for deal documents: access per group per folder, a watermark on every page that is opened, and an activity trail no one can erase.',
+		'Rakda is a virtual data room for deal documents: per-group, per-folder access, a watermark on every page opened, and an activity trail no one can erase. Data stored in Jakarta. No demo call, no sales.',
 	'hero.cta': 'Start the 30-day trial',
 	'hero.ctaHint': 'No demo call. Your first room is ready in minutes.',
 	'hero.tryHint': 'Try it: switch permissions on or off in this grid.',
@@ -39,9 +35,6 @@ export const en: Record<keyof typeof id, string> = {
 	'grid.tip.download': 'Download: a watermarked PDF. Turns on View.',
 	'grid.tip.original':
 		'Download clean PDF: a clean rendition. Turns on Download, turns off Watermark.',
-	'grid.rule': 'Clean PDF download turns on Download; Download and watermark turn on View.',
-	'grid.exclusive':
-		'Watermark and clean download cannot both be on: marking the screen while handing out a clean file protects nothing.',
 	'grid.flow': 'Access flows down to everything in the folder, subfolders included.',
 	'grid.reset': 'Restore the starting setup',
 	'grid.groupTabs': 'Choose a group',
@@ -212,9 +205,8 @@ export const en: Record<keyof typeof id, string> = {
 	'setup.6.until': 'until {date}',
 	'setup.6.open': 'Open room',
 
-	'close.title': 'A secure data room for your deal documents.',
-	'close.body':
-		'Built for confidential documents. Controlled, audited access from preparation to archive.',
+	'close.title': 'Your next deal, not through Drive.',
+	'close.body': 'Your first room is ready in minutes. Data in Jakarta, no demo call, no sales.',
 	'close.cta': 'Start the 30-day trial',
 	'close.signIn': 'Already have an account? Sign in',
 
@@ -242,6 +234,7 @@ export const en: Record<keyof typeof id, string> = {
 	'footer.privacy': 'Privacy Policy',
 	'footer.terms': 'Terms of Service',
 	'footer.contact': 'Contact',
+	'footer.guides': 'Guides',
 	'footer.lang': 'Bahasa Indonesia',
 	'footer.rights': '© 2026 {org}',
 
@@ -252,5 +245,92 @@ export const en: Record<keyof typeof id, string> = {
 	'legal.updated': 'Updated {date}',
 	'legal.org': 'Legal entity',
 	'legal.address': 'Address',
-	'legal.email': 'Email'
+	'legal.email': 'Email',
+
+	'meta.ogAlt': 'Rakda — Virtual Data Room in Indonesia. Data in Jakarta.',
+	'nav.fitur': 'Features',
+	'nav.harga': 'Pricing',
+	'hero.scroll': 'Try the permission grid below',
+	'grid.subset': 'Three of this room’s {n} folders are shown.',
+	'grid.mini': 'View is always watermarked. Download gives a watermarked PDF and turns on View.',
+	'grid.full': 'The full four-level permissions are on the features page.',
+	'wl.label': 'Your work email',
+	'wl.placeholder': 'name@company.com',
+	'wl.submit': 'Join the waitlist',
+	'wl.hint': 'The 30-day trial is not open yet. One email when it opens; nothing else.',
+	'wl.pending': 'Sending…',
+	'wl.ok': 'Thank you. We will tell you when the trial opens.',
+	'wl.err': 'Could not send. Try again, or write to {email}.',
+	'wl.nav': 'Waitlist',
+	'core.title': 'Three reasons to leave Google Drive.',
+	'core.desc':
+		'A sharing link gives every recipient the same permission, can be forwarded to anyone, and does not record who read which page. Rakda fixes all three.',
+	'core.1.t': 'Access per group',
+	'core.1.b':
+		'Permissions go to a group, not to people one by one, per folder, and flow down to subfolders. A folder a group is not allowed to see does not appear in their list at all.',
+	'core.2.t': 'A watermark that cannot be removed',
+	'core.2.b':
+		'The reader’s identity, the time, and the IP address are burned into the pixels of every page opened. Not a layer; no PDF tool can lift it. The original file never leaves the server.',
+	'core.3.t': 'Page analytics',
+	'core.3.b':
+		'Every opening records page by page, with dwell time. You know which parts a buyer read, and for how long.',
+	'core.see': 'See {n}',
+	'who.title': 'Who it is for.',
+	'who.desc':
+		'Five built-in templates, one per kind of deal. Pick the closest; the folders are already laid out, and you upload.',
+	'who.1.p': 'A founder raising a round',
+	'who.1.b':
+		'Three investors look at once. One Drive link cannot tell you who actually read your projections.',
+	'who.2.p': 'An owner or advisor on an M&A deal',
+	'who.2.b': 'Several bidders, one room. One must not see what another sees.',
+	'who.3.p': 'Counsel in litigation',
+	'who.3.b':
+		'Evidence and drafts travel as email attachments that can be forwarded to the other side without a trace.',
+	'who.4.p': 'A property seller or agent',
+	'who.4.b':
+		'Title deeds and appraisals go to several prospects at once, with no record of who opened what.',
+	'who.5.p': 'A finance team under audit',
+	'who.5.b':
+		'The auditors ask five teams for documents; the latest version is lost in an email thread.',
+	'who.tree': 'Folder structure',
+	'who.facts': '{t} templates · {f} folders, all in the product today.',
+	'lfaq.title': 'Frequently asked.',
+	'lfaq.desc': 'Short answers before you move deal documents into Rakda.',
+	'lfaq.all': 'All {n} questions',
+	'close.faq': 'FAQ',
+	'close.fitur': 'All features',
+	'fitur.metaTitle': 'Rakda features — access, per-group Q&A, templates, room lifecycle',
+	'fitur.metaDescription':
+		'Every feature of the Rakda virtual data room: four-level per-group, per-folder access, per-group Q&A, five folder templates, three room states, and a six-step setup with no training.',
+	'fitur.title': 'Every feature, one page.',
+	'fitur.lede':
+		'The main page shows three things. This page shows the rest: per-group Q&A, five templates, three room states, and the six setup steps. All of it runs in the code today.',
+	'fitur.perm.t': 'Full access control: four levels',
+	'fitur.perm.b':
+		'The grid on the main page shows two permissions. The app has four, per group per folder: View, Watermark, Download (a watermarked PDF), and Download clean PDF. Clean download turns on Download; Download and Watermark turn on View. Watermark and clean download cannot both be on: marking the screen while handing out a clean file protects nothing. Permissions flow down to subfolders.',
+	'harga.metaTitle': 'Rakda pricing — flat, published, no per-guest fee',
+	'harga.metaDescription':
+		'Rakda’s virtual data room pricing is not final. What is certain: a 30-day trial, one flat price per plan, no per-guest or per-GB fees, and the same security on every plan.',
+	'harga.title': 'Clear pricing. Not final yet.',
+	'harga.lede':
+		'We have not published numbers. What is certain is written below; the rest will appear on this page, not through a quote or a demo call.',
+	'harga.1.t': 'A 30-day trial',
+	'harga.1.b':
+		'Every new account gets the full 30 days, not 14. A deal rarely closes in two weeks.',
+	'harga.2.t': 'One flat price per plan',
+	'harga.2.b':
+		'Plans differ by capacity, not by whom you invite. The numbers will be listed here, openly.',
+	'harga.3.t': 'No per-guest, per-seat, or per-GB fees',
+	'harga.3.b':
+		'Guests are the other side of your transaction. We do not bill them, and we do not bill you for them.',
+	'harga.4.t': 'The same security on every plan',
+	'harga.4.b':
+		'Privacy mode, viewer hardening, and view watermarking are not sold per plan. A plan gate never reduces anyone’s security.',
+	'harga.5.t': 'No permanent free plan',
+	'harga.5.b': 'After the trial, every plan is paid. We would rather say so now.',
+	'harga.6.t': 'No sales, no quotes',
+	'harga.6.b': 'You sign up yourself, read the price yourself, and decide yourself.',
+	'harga.cta': 'Tell me when pricing is published',
+	'art.related': 'Read next',
+	'art.updated': 'Updated {date}'
 };

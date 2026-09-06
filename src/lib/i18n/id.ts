@@ -1,7 +1,8 @@
 export const id = {
-	'meta.title': 'Rakda — Ruang data aman untuk dokumen deal Anda',
+	'meta.title':
+		'Rakda — Virtual Data Room (VDR) Indonesia untuk M&A, Fundraising, dan Due Diligence',
 	'meta.description':
-		'Ruang data virtual yang Anda atur sendiri: hak akses per grup per folder, watermark di setiap halaman, dan jejak aktivitas yang tidak bisa dihapus. Uji coba 30 hari.',
+		'Virtual data room Indonesia yang Anda atur sendiri: hak akses per grup per folder, watermark di setiap halaman, jejak aktivitas yang tidak bisa dihapus. Data di Jakarta. Tanpa jadwal demo, tanpa sales.',
 
 	'nav.skip': 'Lompat ke konten',
 	'nav.signIn': 'Masuk',
@@ -10,14 +11,9 @@ export const id = {
 	'nav.lang': 'EN',
 	'nav.langAria': 'Switch to English',
 
-	'cta.notify': 'Beritahu saya saat uji coba dibuka',
-	'cta.notify.short': 'Kabari saya',
-	'cta.notify.subject': 'Beritahu saya saat uji coba Rakda dibuka',
-	'cta.soon': 'Uji coba 30 hari dibuka segera.',
-
-	'hero.h1': 'Siapa boleh melihat apa. Anda yang menentukan.',
+	'hero.h1': 'Berhenti kirim dokumen deal lewat Google Drive.',
 	'hero.sub':
-		'Rakda adalah ruang data untuk dokumen deal: hak akses per grup per folder, watermark di setiap halaman yang dibuka, dan jejak aktivitas yang tidak bisa dihapus siapa pun.',
+		'Rakda adalah virtual data room untuk dokumen deal: hak akses per grup per folder, watermark di setiap halaman yang dibuka, dan jejak aktivitas yang tidak bisa dihapus siapa pun. Data tersimpan di Jakarta. Tanpa jadwal demo, tanpa sales.',
 	'hero.cta': 'Mulai uji coba 30 hari',
 	'hero.ctaHint': 'Tanpa jadwal demo. Ruang pertama siap dalam hitungan menit.',
 	'hero.tryHint': 'Coba sendiri: nyalakan atau matikan izin di kisi ini.',
@@ -37,9 +33,6 @@ export const id = {
 	'grid.tip.download': 'Unduh: PDF ber-watermark. Menyalakan Lihat.',
 	'grid.tip.original':
 		'Unduh PDF tanpa watermark: rendisi bersih. Menyalakan Unduh, mematikan Watermark.',
-	'grid.rule': 'Unduh PDF tanpa watermark menyalakan Unduh; Unduh dan watermark menyalakan Lihat.',
-	'grid.exclusive':
-		'Watermark dan unduh tanpa watermark tidak bisa menyala bersamaan: menandai layar sambil melepas berkas bersih tidak melindungi apa pun.',
 	'grid.flow': 'Akses mengalir ke seluruh isi folder, termasuk subfolder.',
 	'grid.reset': 'Kembalikan pengaturan awal',
 	'grid.groupTabs': 'Pilih grup',
@@ -210,9 +203,9 @@ export const id = {
 	'setup.6.until': 'sampai {date}',
 	'setup.6.open': 'Buka ruang',
 
-	'close.title': 'Ruang data aman untuk dokumen deal Anda.',
+	'close.title': 'Dokumen deal berikutnya, bukan lewat Drive.',
 	'close.body':
-		'Dibangun untuk dokumen rahasia. Akses terkontrol dan teraudit, dari persiapan sampai arsip.',
+		'Ruang pertama siap dalam hitungan menit. Data di Jakarta, tanpa jadwal demo, tanpa sales.',
 	'close.cta': 'Mulai uji coba 30 hari',
 	'close.signIn': 'Sudah punya akun? Masuk',
 
@@ -240,6 +233,7 @@ export const id = {
 	'footer.privacy': 'Kebijakan Privasi',
 	'footer.terms': 'Ketentuan Layanan',
 	'footer.contact': 'Kontak',
+	'footer.guides': 'Panduan',
 	'footer.lang': 'English',
 	'footer.rights': '© 2026 {org}',
 
@@ -250,5 +244,92 @@ export const id = {
 	'legal.updated': 'Diperbarui {date}',
 	'legal.org': 'Badan usaha',
 	'legal.address': 'Alamat',
-	'legal.email': 'Email'
+	'legal.email': 'Email',
+
+	'meta.ogAlt': 'Rakda — Virtual Data Room Indonesia. Data di Jakarta.',
+	'nav.fitur': 'Fitur',
+	'nav.harga': 'Harga',
+	'hero.scroll': 'Coba kisi izinnya di bawah',
+	'grid.subset': 'Tiga dari {n} folder ruang ini ditampilkan.',
+	'grid.mini': 'Lihat selalu ber-watermark. Unduh memberi PDF ber-watermark dan menyalakan Lihat.',
+	'grid.full': 'Izin lengkap, empat tingkat, ada di halaman fitur.',
+	'wl.label': 'Email kerja Anda',
+	'wl.placeholder': 'nama@perusahaan.co.id',
+	'wl.submit': 'Masuk daftar tunggu',
+	'wl.hint': 'Uji coba 30 hari belum dibuka. Satu email saat dibuka; tidak ada yang lain.',
+	'wl.pending': 'Mengirim…',
+	'wl.ok': 'Terima kasih. Kami kabari Anda saat uji coba dibuka.',
+	'wl.err': 'Gagal mengirim. Coba lagi, atau tulis ke {email}.',
+	'wl.nav': 'Daftar tunggu',
+	'core.title': 'Tiga alasan pindah dari Google Drive.',
+	'core.desc':
+		'Tautan berbagi memberi satu izin yang sama untuk semua penerima, bisa diteruskan ke siapa saja, dan tidak mencatat siapa membaca halaman mana. Rakda memperbaiki ketiganya.',
+	'core.1.t': 'Hak akses per grup',
+	'core.1.b':
+		'Izin diberikan ke grup, bukan orang per orang, per folder, dan mengalir ke subfolder. Folder yang tidak diizinkan tidak muncul sama sekali di daftar tamu.',
+	'core.2.t': 'Watermark yang tidak bisa dilepas',
+	'core.2.b':
+		'Identitas pembaca, waktu, dan alamat IP dibakar ke piksel setiap halaman yang dibuka. Bukan lapisan; tidak ada alat PDF yang bisa mengangkatnya. Berkas asli tidak pernah keluar dari server.',
+	'core.3.t': 'Analitik halaman',
+	'core.3.b':
+		'Setiap pembukaan mencatat halaman demi halaman berikut durasinya. Anda tahu bagian mana yang dibaca calon pembeli, dan berapa lama.',
+	'core.see': 'Lihat {n}',
+	'who.title': 'Untuk siapa.',
+	'who.desc':
+		'Lima template bawaan, satu per jenis deal. Pilih yang paling dekat; folder-foldernya sudah tersusun, dan Anda tinggal mengunggah.',
+	'who.1.p': 'Founder yang menggalang dana',
+	'who.1.b':
+		'Tiga investor memeriksa bersamaan. Satu tautan Drive tidak memberi tahu siapa yang benar-benar membaca proyeksi Anda.',
+	'who.2.p': 'Pemilik atau penasihat M&A',
+	'who.2.b':
+		'Beberapa calon pembeli, satu ruang. Yang satu tidak boleh melihat apa yang dilihat yang lain.',
+	'who.3.p': 'Kuasa hukum dalam litigasi',
+	'who.3.b':
+		'Bukti dan draf beredar lewat lampiran email yang bisa diteruskan ke pihak lawan tanpa jejak.',
+	'who.4.p': 'Penjual atau agen properti',
+	'who.4.b':
+		'Sertifikat dan dokumen appraisal dibagikan ke beberapa peminat sekaligus, tanpa catatan siapa membuka apa.',
+	'who.5.p': 'Tim keuangan yang diaudit',
+	'who.5.b': 'Auditor meminta dokumen dari lima tim; versi terbaru tercecer di utas email.',
+	'who.tree': 'Struktur folder',
+	'who.facts': '{t} template · {f} folder, semuanya sudah ada di produk hari ini.',
+	'lfaq.title': 'Pertanyaan yang sering diajukan.',
+	'lfaq.desc': 'Jawaban singkat sebelum Anda memindahkan dokumen deal ke Rakda.',
+	'lfaq.all': 'Semua {n} pertanyaan',
+	'close.faq': 'Pertanyaan umum',
+	'close.fitur': 'Semua fitur',
+	'fitur.metaTitle': 'Fitur Rakda — hak akses, Q&A per grup, template, siklus ruang',
+	'fitur.metaDescription':
+		'Semua fitur virtual data room Rakda: hak akses empat tingkat per grup per folder, Q&A per grup, lima template folder, tiga status ruang, dan penyiapan enam langkah tanpa pelatihan.',
+	'fitur.title': 'Semua fitur, satu halaman.',
+	'fitur.lede':
+		'Halaman utama menunjukkan tiga hal. Halaman ini menunjukkan sisanya: Q&A per grup, lima template, tiga status ruang, dan enam langkah penyiapan. Semuanya sudah berjalan di kode hari ini.',
+	'fitur.perm.t': 'Hak akses lengkap: empat tingkat',
+	'fitur.perm.b':
+		'Kisi di halaman utama menampilkan dua izin. Di aplikasi ada empat, per grup per folder: Lihat, Watermark, Unduh (PDF ber-watermark), dan Unduh PDF tanpa watermark. Unduh tanpa watermark menyalakan Unduh; Unduh dan Watermark menyalakan Lihat. Watermark dan unduh tanpa watermark tidak bisa menyala bersamaan: menandai layar sambil melepas berkas bersih tidak melindungi apa pun. Izin mengalir ke subfolder.',
+	'harga.metaTitle': 'Harga Rakda — flat, terbuka, tanpa biaya per tamu',
+	'harga.metaDescription':
+		'Harga virtual data room Rakda belum final. Yang sudah pasti: uji coba 30 hari, satu harga flat per paket, tanpa biaya per tamu atau per GB, dan keamanan yang sama di semua paket.',
+	'harga.title': 'Harga yang jelas. Belum final.',
+	'harga.lede':
+		'Kami belum mengumumkan angka. Yang sudah pasti tertulis di bawah; sisanya akan muncul di halaman ini, bukan lewat penawaran atau jadwal demo.',
+	'harga.1.t': 'Uji coba 30 hari',
+	'harga.1.b':
+		'Setiap akun baru mendapat 30 hari penuh, bukan 14. Deal jarang selesai dalam dua minggu.',
+	'harga.2.t': 'Satu harga flat per paket',
+	'harga.2.b':
+		'Paket dibedakan oleh kapasitas, bukan oleh siapa yang Anda undang. Angkanya akan tercantum di sini, terbuka.',
+	'harga.3.t': 'Tanpa biaya per tamu, per kursi, atau per GB',
+	'harga.3.b':
+		'Tamu adalah pihak lawan Anda dalam transaksi. Kami tidak menagih mereka, dan tidak menagih Anda karena mereka.',
+	'harga.4.t': 'Keamanan sama di semua paket',
+	'harga.4.b':
+		'Mode privasi, pengerasan viewer, dan watermark tampilan tidak dijual per paket. Gerbang paket tidak pernah mengurangi keamanan siapa pun.',
+	'harga.5.t': 'Tidak ada paket gratis permanen',
+	'harga.5.b': 'Setelah uji coba, semua paket berbayar. Kami lebih suka mengatakannya sekarang.',
+	'harga.6.t': 'Tanpa sales, tanpa penawaran',
+	'harga.6.b': 'Anda mendaftar sendiri, membaca harga sendiri, dan memutuskan sendiri.',
+	'harga.cta': 'Kabari saya saat harga diumumkan',
+	'art.related': 'Baca juga',
+	'art.updated': 'Diperbarui {date}'
 };

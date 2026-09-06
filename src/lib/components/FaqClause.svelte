@@ -45,7 +45,7 @@
 		</div>
 		<aside class="margin">
 			{#if ref}
-				<a class="ref" href={localePath(locale, '', '/') + '#' + ref.anchor}>
+				<a class="ref" href={localePath(locale, '', ref.path) + '#' + ref.anchor}>
 					<span class="leader" aria-hidden="true"></span>
 					<span class="refnum font-mono">§{ref.n}</span>
 					<span class="reflabel"

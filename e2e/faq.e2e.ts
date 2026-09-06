@@ -23,5 +23,8 @@ test('robots and sitemap are served', async ({ request }) => {
 	expect(await robots.text()).toContain('User-agent: *');
 	const sitemap = await request.get('/sitemap.xml');
 	expect(sitemap.ok()).toBeTruthy();
-	expect(await sitemap.text()).toContain('<urlset');
+	const xml = await sitemap.text();
+	expect(xml).toContain('<urlset');
+	expect(xml).toContain('https://rakda.id/en/fitur');
+	expect(xml).toContain('https://rakda.id/rakda-vs-google-drive');
 });

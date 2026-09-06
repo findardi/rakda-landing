@@ -380,7 +380,7 @@ Small, bordered, pill-shaped facts.
 - **Room card:** a grid `auto | 1fr` with 0.625rem × 0.75rem gaps: a 2.25rem `panel` stage tile (mono 0.75rem 500, 6px) beside the room name (600, `ink`), and the status chip spanning the full width on its own row.
 
 ### Inputs / Fields
-The pages have no text inputs. Their fields are toggles and disclosures:
+One text input exists: the waitlist email field (`Waitlist.svelte`): 2.75rem (3rem in the hero and close), `surface` fill, `line-strong` border at 6px, `ink-3` border on hover, `primary` border on focus, placeholder in `muted`, beside the primary submit; it stacks under 480px. The rest are toggles and disclosures:
 - **Permission segment:** 2rem × 1.75rem, `muted` icon on transparent; hover `panel` + `ink`; on-state `ink` fill with `surface` icon, hover to `ink-2`. The whole cell frame takes a 2px teal outline when it is the previewed cell.
 - **Group tab (mobile):** 2.25rem, `surface` with `line-strong` border, 0.8125rem 500 `ink-2`; active is `ink` fill with `surface` text.
 - **Template row:** borderless list button, hairline below, `surface` fill on hover and when selected; the selected name turns `primary-strong`. No side stripe.

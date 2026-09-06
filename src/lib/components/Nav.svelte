@@ -18,6 +18,11 @@
 	// The grid state rides along when switching language.
 	let switchHref = $derived(localePath(other, urlSearch.current));
 	const login = appUrl('/login');
+	const pages = [
+		['/fitur', 'nav.fitur'],
+		['/harga', 'nav.harga'],
+		['/faq', 'nav.faq']
+	] as const;
 </script>
 
 <a class="skip" href="#main">{t('nav.skip')}</a>
@@ -33,15 +38,17 @@
 				aria-label={t('nav.langAria')}
 				class="lang font-mono">{t('nav.lang')}</a
 			>
-			<a
-				href={localePath(locale, '', '/faq')}
-				class="signin"
-				aria-current={page.url.pathname.endsWith('/faq') ? 'page' : undefined}>{t('nav.faq')}</a
-			>
+			{#each pages as [slug, key] (slug)}
+				<a
+					href={localePath(locale, '', slug)}
+					class="signin"
+					aria-current={page.url.pathname.endsWith(slug) ? 'page' : undefined}>{t(key)}</a
+				>
+			{/each}
 			{#if login}
 				<a href={login} class="signin">{t('nav.signIn')}</a>
 			{/if}
-			<TrialCta label={t('nav.trial')} size="sm" short quiet={quietWhileHero && heroCta.visible} />
+			<TrialCta label={t('nav.trial')} size="sm" quiet={quietWhileHero && heroCta.visible} />
 		</nav>
 	</div>
 </header>

@@ -1,9 +1,9 @@
 import { env } from '$env/dynamic/public';
 import type { Locale } from '$lib/i18n';
 
-// The public origin, e.g. https://rakda.id. Canonical, hreflang, Open Graph URLs,
-// the sitemap, and the robots Sitemap line appear only once this is set.
-export const SITE_URL = (env.PUBLIC_SITE_URL ?? '').replace(/\/+$/, '');
+// The public origin. PUBLIC_SITE_URL overrides it (a preview host, say); canonical,
+// hreflang, Open Graph, and the sitemap always point at the production site.
+export const SITE_URL = (env.PUBLIC_SITE_URL || 'https://rakda.id').replace(/\/+$/, '');
 export const siteConfigured = SITE_URL.length > 0;
 
 export function absolute(path: string): string | null {
@@ -16,7 +16,19 @@ export function localizedPaths(path: string): Record<Locale, string> {
 	return { id: clean || '/', en: `/en${clean}` };
 }
 
-export const PAGES = ['/', '/faq', '/privacy', '/terms', '/contact'] as const;
+export const PAGES = [
+	'/',
+	'/fitur',
+	'/harga',
+	'/faq',
+	'/apa-itu-virtual-data-room',
+	'/data-room-fundraising',
+	'/data-room-due-diligence-ma',
+	'/rakda-vs-google-drive',
+	'/privacy',
+	'/terms',
+	'/contact'
+] as const;
 
 /** `<` is escaped so a JSON-LD script can never close itself. */
 export function jsonLd(data: unknown): string {

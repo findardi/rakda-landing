@@ -3,10 +3,16 @@
 	import { getI18n } from '$lib/i18n/context';
 	import { ORG } from '$lib/legal/content';
 	import Brand from './Brand.svelte';
+	import { ARTICLE_SLUGS, ARTICLE_TITLES } from '$lib/articles/slugs';
 
 	const { t, locale } = getI18n();
 	const other = otherLocale(locale);
 	const legal = ['privacy', 'terms', 'contact'] as const;
+	const pages = [
+		['/fitur', 'nav.fitur'],
+		['/harga', 'nav.harga'],
+		['/faq', 'nav.faq']
+	] as const;
 </script>
 
 <footer class="foot">
@@ -14,13 +20,21 @@
 		<a href={localePath(locale)} class="brand" aria-label="Rakda"><Brand size={20} /></a>
 		<p class="synthetic">{t('footer.synthetic')}</p>
 		<p class="right">
-			<a href={localePath(locale, '', '/faq')}>{t('nav.faq')}</a>
+			{#each pages as [slug, key] (slug)}
+				<a href={localePath(locale, '', slug)}>{t(key)}</a>
+			{/each}
 			{#each legal as slug (slug)}
 				<a href={localePath(locale, '', `/${slug}`)}>{t(`footer.${slug}`)}</a>
 			{/each}
 			<a href={localePath(other)} data-sveltekit-reload hreflang={other} lang={other}
 				>{t('footer.lang')}</a
 			>
+		</p>
+		<p class="guides">
+			<span class="gl">{t('footer.guides')}</span>
+			{#each ARTICLE_SLUGS as slug (slug)}
+				<a href={localePath(locale, '', `/${slug}`)}>{ARTICLE_TITLES[slug][locale]}</a>
+			{/each}
 		</p>
 		<p class="org font-mono">{t('footer.rights', { org: ORG.legalName })} · {ORG.address}</p>
 	</div>
@@ -58,6 +72,25 @@
 		color: var(--color-ink-2);
 	}
 	.right a:hover {
+		color: var(--color-ink);
+	}
+	.guides {
+		grid-column: 1 / -1;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.5rem 1.25rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--color-line);
+		font-size: 0.8125rem;
+	}
+	.gl {
+		color: var(--color-muted);
+	}
+	.guides a {
+		color: var(--color-ink-2);
+	}
+	.guides a:hover {
 		color: var(--color-ink);
 	}
 	.org {

@@ -2,7 +2,7 @@
 	import { tick } from 'svelte';
 	import { getI18n } from '$lib/i18n/context';
 	import type { Key } from '$lib/i18n';
-	import { FOLDERS, GROUPS } from '$lib/demo/data';
+	import { FOLDERS, GROUPS, type Folder, type Group } from '$lib/demo/data';
 	import { PERMS, type Grid, type Perm } from '$lib/demo/permissions';
 	import PermIcon from './PermIcon.svelte';
 
@@ -11,13 +11,19 @@
 		focus,
 		ontoggle,
 		onfocuscell,
-		describedby
+		describedby,
+		groups = GROUPS,
+		folders = FOLDERS,
+		perms = PERMS
 	}: {
 		grid: Grid;
 		focus: { g: number; f: number };
 		ontoggle: (g: number, f: number, perm: Perm) => void;
 		onfocuscell: (g: number, f: number) => void;
 		describedby?: string;
+		groups?: readonly Group[];
+		folders?: readonly Folder[];
+		perms?: readonly Perm[];
 	} = $props();
 
 	const { t, locale } = getI18n();
@@ -44,9 +50,9 @@
 	}
 
 	function onKey(e: KeyboardEvent, g: number, f: number, i: number) {
-		const G = GROUPS.length;
-		const F = FOLDERS.length;
-		const P = PERMS.length;
+		const G = groups.length;
+		const F = folders.length;
+		const P = perms.length;
 		let ng = g;
 		let nf = f;
 		let ni = i;
@@ -108,7 +114,7 @@
 </script>
 
 <div class="tabs" role="group" aria-label={t('grid.groupTabs')}>
-	{#each GROUPS as group, g (group.id)}
+	{#each groups as group, g (group.id)}
 		<button
 			type="button"
 			class="tab"
@@ -120,7 +126,7 @@
 </div>
 
 <div class="legend" aria-hidden="true">
-	{#each PERMS as perm (perm)}
+	{#each perms as perm (perm)}
 		<span class="lg"><span class="lgicon"><PermIcon {perm} size={12} /></span>{permName(perm)}</span
 		>
 	{/each}
@@ -130,16 +136,16 @@
 	<thead>
 		<tr>
 			<th scope="col" class="fh">{t('grid.folder')}</th>
-			{#each GROUPS as group, g (group.id)}
+			{#each groups as group, g (group.id)}
 				<th scope="col" class="gh" class:hide-sm={focus.g !== g}>{group.name[locale]}</th>
 			{/each}
 		</tr>
 	</thead>
 	<tbody>
-		{#each FOLDERS as folder, f (folder.id)}
+		{#each folders as folder, f (folder.id)}
 			<tr>
 				<th scope="row" class="fname">{folder.name[locale]}</th>
-				{#each GROUPS as group, g (group.id)}
+				{#each groups as group, g (group.id)}
 					{@const cell = grid[g][f]}
 					<td class:hide-sm={focus.g !== g} class:focused={focus.g === g && focus.f === f}>
 						<div
@@ -147,7 +153,7 @@
 							role="group"
 							aria-label="{group.name[locale]} · {folder.name[locale]}"
 						>
-							{#each PERMS as perm, i (perm)}
+							{#each perms as perm, i (perm)}
 								<button
 									type="button"
 									class="seg"

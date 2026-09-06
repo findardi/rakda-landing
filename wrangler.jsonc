@@ -1,5 +1,17 @@
 {
 	"name": "rakda-landing",
 	"compatibility_date": "2026-09-05",
-	"assets": { "directory": "./build" }
+	// The worker only handles POST /api/waitlist; every other request is a static asset.
+	"main": "worker/index.ts",
+	"assets": { "directory": "./build", "binding": "ASSETS" },
+	// Waitlist storage. Create it once, then paste the id here:
+	//   npx wrangler kv namespace create WAITLIST
+	// Until it is bound, the form answers 503 and shows the contact address instead.
+	"kv_namespaces": [
+    {
+      "binding": "WAITLIST",
+      "id": "4c320105a258447d92b9a39b9134eb3a"
+    }
+  ]
+
 }

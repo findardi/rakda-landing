@@ -4,7 +4,16 @@
 	import type { Key } from '$lib/i18n';
 	import { getI18n } from '$lib/i18n/context';
 	import { secnum } from '$lib/refs';
-	import { ACCESS_UNTIL, DEMO_IP, FOLDERS, GROUPS, ROOM_NAME } from '$lib/demo/data';
+	import { appConfigured } from '$lib/app-url';
+	import { localePath } from '$lib/i18n';
+	import {
+		ACCESS_UNTIL,
+		DEMO_IP,
+		HERO_FOLDERS as FOLDERS,
+		HERO_GROUPS as GROUPS,
+		ROOM_NAME,
+		TEMPLATES
+	} from '$lib/demo/data';
 	import type { Entry } from '$lib/demo/activity';
 	import {
 		DEFAULT_ENCODED,
@@ -12,7 +21,8 @@
 		cloneGrid,
 		decodeGrid,
 		encodeGrid,
-		toggle,
+		HERO_PERMS,
+		toggleMini,
 		type Grid,
 		type Perm
 	} from '$lib/demo/permissions';
@@ -172,7 +182,7 @@
 
 	function onToggle(g: number, f: number, perm: Perm) {
 		const before = grid[g][f];
-		const after = toggle(before, perm);
+		const after = toggleMini(before, perm);
 		const next = cloneGrid(grid);
 		next[g][f] = after;
 		navigateTo(next);
@@ -209,15 +219,32 @@
 </script>
 
 <section class="hero" aria-labelledby="hero-h">
+	<!-- The first fold is the promise and the one action; the grid starts below it. -->
 	<div class="wrap band">
-		<div>
+		<div class="copy">
 			<h1 id="hero-h">{t('hero.h1')}</h1>
 			<p class="sub">{t('hero.sub')}</p>
+			<div class="act" bind:this={act}>
+				<TrialCta label={t('hero.cta')} size="lg" />
+				{#if appConfigured}
+					<p class="hint">{t('hero.ctaHint')}</p>
+				{/if}
+			</div>
 		</div>
-		<div class="act" bind:this={act}>
-			<TrialCta label={t('hero.cta')} size="lg" />
-			<p class="hint">{t('hero.ctaHint')}</p>
-		</div>
+		<a class="scroll" href="#access">
+			{t('hero.scroll')}
+			<svg
+				viewBox="0 0 16 16"
+				width="14"
+				height="14"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="1.5"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				aria-hidden="true"><path d="M8 3v10M4 9l4 4 4-4" /></svg
+			>
+		</a>
 	</div>
 
 	<div class="wrap deck" id="access">
@@ -240,6 +267,7 @@
 						onclick={reset}>{t('grid.reset')}</button
 					>
 				</p>
+				<p class="subset">{t('grid.subset', { n: TEMPLATES[0].count })}</p>
 			</div>
 			<p class="try">
 				{t('hero.tryHint')}
@@ -249,14 +277,17 @@
 			<Matrix
 				{grid}
 				{focus}
+				groups={GROUPS}
+				folders={FOLDERS}
+				perms={HERO_PERMS}
 				ontoggle={onToggle}
 				onfocuscell={(g, f) => (focus = { g, f })}
 				describedby="grid-rules"
 			/>
 			<p class="rule" id="grid-rules">
+				{t('grid.mini')}
 				{t('grid.flow')}
-				{t('grid.rule')}
-				{t('grid.exclusive')}
+				<a href={localePath(locale, '', '/fitur')}>{t('grid.full')}</a>
 				<span class="sr-only">{t('grid.keys')}</span>
 			</p>
 			<p class="sr-only" aria-live="polite">{status}</p>
@@ -289,10 +320,9 @@
 		padding-block: 2.25rem 4.5rem;
 	}
 	.band {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 2rem 3rem;
-		align-items: end;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
 		padding-bottom: 1.75rem;
 	}
 	h1 {
@@ -315,6 +345,36 @@
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 0.5rem;
+		margin-top: 1.75rem;
+		width: 100%;
+	}
+	.scroll {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.375rem;
+		margin-top: 2.5rem;
+		font-size: 0.8125rem;
+		color: var(--color-ink-2);
+		text-decoration: none;
+	}
+	.scroll:hover {
+		color: var(--color-ink);
+		text-decoration: underline;
+	}
+	/* On a desktop the first viewport holds the headline, the subline, and the form
+	   only: the band is the viewport less the nav and the hero's top padding, so the
+	   grid begins exactly at the first scroll. Capped so a very tall screen does not
+	   push the grid out of reach. */
+	@media (min-width: 1024px) {
+		.band {
+			min-height: min(calc(100svh - 5.75rem), 60rem);
+		}
+		.copy {
+			margin-block: auto;
+		}
+		.scroll {
+			padding-top: 2.5rem;
+		}
 	}
 	.hint {
 		font-size: 0.8125rem;
@@ -414,6 +474,11 @@
 		font-size: 0.875rem;
 		margin-left: 0.625rem;
 	}
+	.subset {
+		flex-basis: 100%;
+		font-size: 0.8125rem;
+		color: var(--color-muted);
+	}
 	.meta {
 		display: flex;
 		flex-wrap: wrap;
@@ -444,10 +509,6 @@
 		max-width: 60ch;
 	}
 	@media (max-width: 1023px) {
-		.band {
-			grid-template-columns: 1fr;
-			align-items: start;
-		}
 		.try .wide {
 			display: none;
 		}

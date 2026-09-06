@@ -9,9 +9,11 @@
 		ld
 	}: { title: string; description: string; path: string; ld?: string } = $props();
 
-	const { locale } = getI18n();
+	const { t, locale } = getI18n();
 	let paths = $derived(localizedPaths(path));
 	let canonical = $derived(absolute(paths[locale]));
+	// One card per locale, rendered by scripts/og.mjs into static/.
+	const image = absolute(`/og-${locale}.png`);
 	// Assembled here so the template never carries a literal closing script tag.
 	let ldTag = $derived(ld ? '<script type="application/ld+json">' + ld + '<' + '/script>' : '');
 </script>
@@ -23,8 +25,17 @@
 	<meta property="og:description" content={description} />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="Rakda" />
-	<meta name="twitter:card" content="summary" />
 	<meta property="og:locale" content={locale === 'id' ? 'id_ID' : 'en_GB'} />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={description} />
+	{#if image}
+		<meta property="og:image" content={image} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content={t('meta.ogAlt')} />
+		<meta name="twitter:image" content={image} />
+	{/if}
 	{#if canonical}
 		<link rel="canonical" href={canonical} />
 		<link rel="alternate" hreflang="id" href={absolute(paths.id)} />

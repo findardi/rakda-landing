@@ -448,3 +448,12 @@ export const FAQ_GROUPS: FaqGroup[] = [
 ];
 
 export const FAQ_COUNT = FAQ_GROUPS.reduce((n, g) => n + g.items.length, 0);
+
+// The clauses repeated on the landing page, in the order a first visit asks them.
+const LANDING_IDS = ['apa-itu-ruang-data', 'beda-drive', 'lokasi-data', 'uji-coba', 'harga'];
+const ALL = FAQ_GROUPS.flatMap((g) => g.items);
+export const LANDING_FAQ: FaqItem[] = LANDING_IDS.map((id) => {
+	const item = ALL.find((x) => x.id === id);
+	if (!item) throw new Error(`landing FAQ: no clause ${id}`);
+	return item;
+});

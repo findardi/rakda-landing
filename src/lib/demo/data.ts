@@ -13,6 +13,9 @@ export const GROUPS: readonly Group[] = [
 	{ id: 'adv', name: { id: 'Penasihat', en: 'Advisors' }, reader: 'ayu@penasihat.example' }
 ];
 
+// The landing grid: the first two groups over three of the twelve folders.
+export const HERO_GROUPS: readonly Group[] = GROUPS.slice(0, 2);
+
 export type Folder = {
 	id: string;
 	name: L;
@@ -211,6 +214,9 @@ export const FOLDERS: readonly Folder[] = [
 ];
 
 // Engagement sample: seconds spent on each of the 24 pages of the FY2025 statements by one reader.
+export const HERO_FOLDERS: readonly Folder[] = [FOLDERS[1], FOLDERS[2], FOLDERS[5]];
+export const TEMPLATE_FOLDER_TOTAL = 53; // sum of TEMPLATES[].count, checked in the e2e test
+
 export const DWELL: readonly number[] = [
 	38, 52, 71, 64, 190, 242, 118, 96, 44, 0, 0, 205, 388, 172, 61, 0, 0, 0, 27, 33, 0, 0, 0, 0
 ];
