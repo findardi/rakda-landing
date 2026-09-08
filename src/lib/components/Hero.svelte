@@ -4,7 +4,7 @@
 	import type { Key } from '$lib/i18n';
 	import { getI18n } from '$lib/i18n/context';
 	import { secnum } from '$lib/refs';
-	import { appConfigured } from '$lib/app-url';
+	import { appConfigured, sandboxUrl } from '$lib/app-url';
 	import { localePath } from '$lib/i18n';
 	import {
 		ACCESS_UNTIL,
@@ -227,7 +227,9 @@
 			<p class="sub">{t('hero.sub')}</p>
 			<div class="act" bind:this={act}>
 				<TrialCta label={t('hero.cta')} size="lg" />
-				{#if appConfigured}
+				{#if sandboxUrl}
+					<p class="hint">{t('try.hint')}</p>
+				{:else if appConfigured}
 					<p class="hint">{t('hero.ctaHint')}</p>
 				{/if}
 			</div>

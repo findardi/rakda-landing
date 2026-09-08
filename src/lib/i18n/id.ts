@@ -253,6 +253,14 @@ export const id = {
 	'wl.ok': 'Terima kasih. Kami kabari Anda saat uji coba dibuka.',
 	'wl.err': 'Gagal mengirim. Coba lagi, atau tulis ke {email}.',
 	'wl.nav': 'Daftar tunggu',
+
+	// The trial sandbox (sandbox.rakda.id/try): the label matches the page title
+	// the visitor lands on, the hint names what the click asks for and gives.
+	'try.nav': 'Coba Rakda',
+	'try.cta': 'Coba Rakda 15 menit',
+	'try.hint': 'Tanpa daftar akun, tanpa kartu. Kredensial dikirim ke email Anda.',
+	'try.body':
+		'Satu ruang data contoh, hanya-baca, selama 15 menit: pandangan admin dan tamu, unduhan ber-watermark. Tanpa daftar akun, tanpa jadwal demo.',
 	'core.title': 'Tiga alasan pindah dari Google Drive.',
 	'core.desc':
 		'Tautan berbagi memberi satu izin yang sama untuk semua penerima, bisa diteruskan ke siapa saja, dan tidak mencatat siapa membaca halaman mana. Rakda memperbaiki ketiganya.',

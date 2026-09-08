@@ -24,7 +24,7 @@ bun run test:e2e   # playwright
 
 ## Environment
 
-Copy `.env.example` to `.env`. `PUBLIC_APP_URL` is the production app origin (`https://app.rakda.id` once it exists); until it is set, sign-in links are not rendered and every trial action is the waitlist form. A dev, staging, or test host in `PUBLIC_APP_URL` is ignored: the public site never links to a test login. `PUBLIC_SITE_URL` defaults to `https://rakda.id` (canonical, hreflang, Open Graph, sitemap).
+Copy `.env.example` to `.env`. `PUBLIC_APP_URL` is the production app origin (`https://app.rakda.id` once it exists); until it is set, sign-in links are not rendered and every trial action is the waitlist form. A dev, staging, or test host in `PUBLIC_APP_URL` is ignored: the public site never links to a test login. `PUBLIC_SANDBOX_URL` is the trial sandbox origin; when set, every trial action links to its `/try` page instead of the app's sign-up (same https-only rule). `PUBLIC_SITE_URL` defaults to `https://rakda.id` (canonical, hreflang, Open Graph, sitemap).
 
 ## Waitlist
 

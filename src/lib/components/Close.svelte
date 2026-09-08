@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { appUrl } from '$lib/app-url';
+	import { appUrl, sandboxUrl } from '$lib/app-url';
 	import { localePath } from '$lib/i18n';
 	import { getI18n } from '$lib/i18n/context';
 	import TrialCta from './TrialCta.svelte';
@@ -15,7 +15,7 @@
 <section id="trial" class="section close" aria-labelledby="close-h">
 	<div class="wrap inner">
 		<h2 id="close-h" class="title">{t('close.title')}</h2>
-		<p class="body">{t('close.body')}</p>
+		<p class="body">{t(sandboxUrl ? 'try.body' : 'close.body')}</p>
 		<div class="act">
 			<TrialCta label={t('close.cta')} size="lg" {formId} />
 			{#if login}

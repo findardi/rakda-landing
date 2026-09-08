@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { appUrl } from '$lib/app-url';
+	import { appUrl, sandboxUrl } from '$lib/app-url';
 	import { localePath } from '$lib/i18n';
 	import { getI18n } from '$lib/i18n/context';
 	import Waitlist from './Waitlist.svelte';
@@ -17,7 +17,13 @@
 	}: { label: string; size?: 'sm' | 'md' | 'lg'; quiet?: boolean; formId?: string } = $props();
 
 	const { t, locale } = getI18n();
-	const register = appUrl('/register');
+	// The sandbox wins over sign-up: a visitor who can try in 15 minutes
+	// without an account should never be sent to a registration form first.
+	const register = sandboxUrl ?? appUrl('/register');
+	// When the destination is the sandbox, the label says so regardless of what
+	// the caller wrote for the trial: a button reading "30-day trial" must never
+	// open a 15-minute read-only room.
+	const text = $derived(sandboxUrl ? t(size === 'sm' ? 'try.nav' : 'try.cta') : label);
 	// The landing page's form; a page without its own form (a policy page) sends
 	// the visitor there, and on the landing page it is a same-page jump.
 	const form = $derived(`${localePath(locale)}#${formId}`);
@@ -30,7 +36,7 @@
 		class:btn-quiet={quiet}
 		class:btn-sm={size === 'sm'}
 		class:lg={size === 'lg'}
-		href={register}>{label}</a
+		href={register}>{text}</a
 	>
 {:else if size === 'sm'}
 	<a class="btn btn-sm" class:btn-primary={!quiet} class:btn-quiet={quiet} href={form}

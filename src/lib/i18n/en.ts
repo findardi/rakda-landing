@@ -254,6 +254,12 @@ export const en: Record<keyof typeof id, string> = {
 	'wl.ok': 'Thank you. We will tell you when the trial opens.',
 	'wl.err': 'Could not send. Try again, or write to {email}.',
 	'wl.nav': 'Waitlist',
+
+	'try.nav': 'Try Rakda',
+	'try.cta': 'Try Rakda for 15 minutes',
+	'try.hint': 'No account, no card. Credentials arrive by email.',
+	'try.body':
+		'One sample data room, read-only, for 15 minutes: admin and guest views, watermarked downloads. No account, no demo call.',
 	'core.title': 'Three reasons to leave Google Drive.',
 	'core.desc':
 		'A sharing link gives every recipient the same permission, can be forwarded to anyone, and does not record who read which page. Rakda fixes all three.',

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import TrialCta from '$lib/components/TrialCta.svelte';
+	import { sandboxUrl } from '$lib/app-url';
 	import { getI18n } from '$lib/i18n/context';
 	import { localePath } from '$lib/i18n';
 	import { jsonLd } from '$lib/seo';
@@ -92,7 +93,7 @@
 
 			<section id="trial" class="close" aria-labelledby="faq-close-h">
 				<h2 id="faq-close-h">{t('faq.close.title')}</h2>
-				<p>{t('faq.close.body')}</p>
+				<p>{t(sandboxUrl ? 'try.body' : 'faq.close.body')}</p>
 				<div class="act">
 					<TrialCta label={t('faq.close.cta')} />
 					<a class="back" href={localePath(locale)}>{t('faq.close.back')}</a>
